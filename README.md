@@ -1,2 +1,56 @@
-# TileTool
-🎨 Windows10 磁贴美化小工具
+# XIU2/TileTool
+
+[![Release Version](https://img.shields.io/github/v/release/XIU2/TileTool.svg?style=flat-square&label=Release&color=1784ff)](https://github.com/XIU2/TileTool/releases/latest)
+[![GitHub license](https://img.shields.io/github/license/XIU2/TileTool.svg?style=flat-square&label=License&color=3cb371)](https://github.com/XIU2/TileTool/blob/master/LICENSE)
+[![GitHub Star](https://img.shields.io/github/stars/XIU2/TileTool.svg?style=flat-square&label=Star&color=3cb371)](https://github.com/XIU2/TileTool/stargazers)
+[![GitHub Fork](https://img.shields.io/github/forks/XIU2/TileTool.svg?style=flat-square&label=Fork&color=3cb371)](https://github.com/XIU2/TileTool/network/members)
+
+**Windows10 磁贴美化小工具**
+
+闲的没事用 C# 重写了一遍 磁贴美化小工具，并开源了（虽然也没人看）~  
+详细介绍、使用说明请看：https://zhuanlan.zhihu.com/p/79630122
+
+****
+
+## 软件界面
+
+![软件界面](https://raw.githubusercontent.com/XIU2/TileTool/master/img/01.png)  
+![右键菜单](https://raw.githubusercontent.com/XIU2/TileTool/master/img/02.png)
+
+****
+
+## 下载地址
+
+* 蓝奏云 ：[https://www.lanzoux.com/b0sp46eh](https://www.lanzoux.com/b0sp46eh)
+* Github：[https://github.com/XIU2/TileTool/releases](https://github.com/XIU2/TileTool/releases)
+
+****
+
+## 使用说明
+
+* 方式一：拖放 **应用程序、快捷方式、开始菜单磁贴(非UWP)** 到软件内，即可编辑磁贴样式  
+* 方式二：右键 **应用程序、快捷方式** 选择 [自定义并固定到"开始"屏幕]，即可编辑磁贴样式  
+—— 方式二需要勾选软件中的 **[添加右键菜单]** 。
+
+> 注意：C:\Program Files 类系统重要目录下的程序，需要 [以管理员身份运行] 本软件！  
+> —— 如果你已经以普通用户权限添加/更新了磁贴，那么磁贴样式是无效的，必须要删除 C:\Users\用户名\AppData\Local\VirtualStore 目录下的内容，然后 [以管理员身份运行] 本软件编辑的磁贴样式才能生效。
+
+****
+
+## 其他说明
+
+### 运行提示 .NET 错误？
+
+本软件最低依赖是 .NET Framework 4.6，报错说明你系统的该依赖版本低于 4.6（Win10 默认满足该依赖），请安装更高版本的 [.NET Framework](https://dotnet.microsoft.com/download/dotnet-framework) ！
+
+****
+
+## 许可证
+
+The GPL-3.0 License.
+
+本软件仅供学习交流，请勿用于商用。  
+
+软件所有权归 X.I.U(XIU2) 所有。  
+
+> 该项目只在 [吾爱破解论坛](https://www.52pojie.cn/)、[知乎文章](https://zhuanlan.zhihu.com/p/79630122) 发布过，其他网站均为转载。当然，**欢迎转载！** 

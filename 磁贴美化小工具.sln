@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30503.244
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "磁贴美化小工具", "磁贴美化小工具.csproj", "{A8851F5E-CBB5-4466-BD72-D95C9BEA4DEA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A8851F5E-CBB5-4466-BD72-D95C9BEA4DEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8851F5E-CBB5-4466-BD72-D95C9BEA4DEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8851F5E-CBB5-4466-BD72-D95C9BEA4DEA}.Debug|x64.ActiveCfg = Debug|x64
+		{A8851F5E-CBB5-4466-BD72-D95C9BEA4DEA}.Debug|x64.Build.0 = Debug|x64
+		{A8851F5E-CBB5-4466-BD72-D95C9BEA4DEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8851F5E-CBB5-4466-BD72-D95C9BEA4DEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8851F5E-CBB5-4466-BD72-D95C9BEA4DEA}.Release|x64.ActiveCfg = Release|x64
+		{A8851F5E-CBB5-4466-BD72-D95C9BEA4DEA}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A3BF980B-2B57-4775-9CC9-75858109A160}
+	EndGlobalSection
+EndGlobal
