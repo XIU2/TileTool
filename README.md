@@ -15,7 +15,11 @@
 ## 软件界面
 
 ![软件界面](https://raw.githubusercontent.com/XIU2/TileTool/master/img/01.png)  
+> 界面折腾半天发现还是好丑，我可能真的没有设计天赋 -.-...  
+
 ![右键菜单](https://raw.githubusercontent.com/XIU2/TileTool/master/img/02.png)
+> 右键菜单示例
+
 
 ****
 
@@ -35,6 +39,10 @@
 > 注意：C:\Program Files 类系统重要目录下的程序，需要 [以管理员身份运行] 本软件！  
 > —— 如果你已经以普通用户权限添加/更新了磁贴，那么磁贴样式是无效的，必须要删除 C:\Users\用户名\AppData\Local\VirtualStore 目录下的内容，然后 [以管理员身份运行] 本软件编辑的磁贴样式才能生效。
 
+### 我已经添加并排版好磁贴了，我还要重新添加吗？
+
+不，你只需要：鼠标拖拽开始菜单的 [磁贴] 到软件中就可以自定义了。  
+
 ****
 
 ## 其他说明
@@ -53,4 +61,4 @@ The GPL-3.0 License.
 
 软件所有权归 X.I.U(XIU2) 所有。  
 
-> 该项目只在 [吾爱破解论坛](https://www.52pojie.cn/)、[知乎文章](https://zhuanlan.zhihu.com/p/79630122) 发布过，其他网站均为转载。当然，**欢迎转载！** 
+> 该项目只在 [吾爱破解论坛](https://www.52pojie.cn/thread-1266756-1-1.html)、[知乎文章](https://zhuanlan.zhihu.com/p/79630122) 发布过，其他网站均为转载。当然，**欢迎转载！** 
