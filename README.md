@@ -33,6 +33,8 @@
 ![](https://raw.githubusercontent.com/XIU2/TileTool/master/img/07.png)  
 ![](https://raw.githubusercontent.com/XIU2/TileTool/master/img/08.png)  
 
+> 磁贴图标包(三百多个)我放在蓝奏云网盘中了，需要自取。  
+
 ****
 
 ## 下载地址
