@@ -162,7 +162,7 @@ namespace 磁贴美化小工具
         
         private void Form_DragEnter(object sender, DragEventArgs e) // 拖放
         {
-            e.Effect = DragDropEffects.All;
+            e.Effect = DragDropEffects.Link;
         }
         
         private void Form_DragDrop(object sender, DragEventArgs e) // 收到拖放，判断当前是不是以管理员身份运行
@@ -173,8 +173,7 @@ namespace 磁贴美化小工具
             }
             else
             {
-                File_DragDrop(((string[])e.Data.GetData(DataFormats.SymbolicLink))[0]);
-                //File_DragDrop(((string[])e.Data.GetData(DataFormats.FileDrop))[0]);
+                File_DragDrop(((string[])e.Data.GetData(DataFormats.FileDrop))[0]);
             }
         }
         
@@ -423,7 +422,7 @@ namespace 磁贴美化小工具
 
         private void Init_Config() // 初始化当前载入的配置
         {
-            Button_添加磁贴.Enabled = Button_查看.Enabled = Button_初始化.Enabled = false; // 程序路径等于空时，禁用添加磁贴等按钮
+            Button_添加磁贴.Enabled = false; // 程序路径等于空时，禁用添加磁贴等按钮
             TextBox_程序路径.Text = TextBox_磁贴名称.Text = TextBox_磁贴图片.Text = TextBox_磁贴图标.Text = Old_Square150x150Logo_Path = "";
             PictureBox_磁贴图片预览.Image = PictureBox_磁贴图标预览.Image = null;
         }

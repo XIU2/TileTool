@@ -205,7 +205,6 @@
             // 
             this.Button_查看.BackColor = System.Drawing.Color.WhiteSmoke;
             this.Button_查看.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Button_查看.Enabled = false;
             this.Button_查看.FlatAppearance.BorderSize = 0;
             this.Button_查看.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Button_查看.Font = new System.Drawing.Font("微软雅黑", 9F);
@@ -224,7 +223,6 @@
             // 
             this.Button_初始化.BackColor = System.Drawing.Color.WhiteSmoke;
             this.Button_初始化.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Button_初始化.Enabled = false;
             this.Button_初始化.FlatAppearance.BorderSize = 0;
             this.Button_初始化.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Button_初始化.Font = new System.Drawing.Font("微软雅黑", 9F);
