@@ -173,7 +173,8 @@ namespace 磁贴美化小工具
             }
             else
             {
-                File_DragDrop(((string[])e.Data.GetData(DataFormats.FileDrop))[0]);
+                File_DragDrop(((string[])e.Data.GetData(DataFormats.SymbolicLink))[0]);
+                //File_DragDrop(((string[])e.Data.GetData(DataFormats.FileDrop))[0]);
             }
         }
         

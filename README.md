@@ -7,7 +7,7 @@
 
 **Windows10 磁贴美化小工具**
 
-闲的没事用 C# 重写了一遍 磁贴美化小工具，并开源了（虽然也没人看）~  
+最近体验了下 Win10 2004 的新版磁贴（开启方法见网盘），统一背景颜色为主题色，且支持磁贴半透明了，感觉还不错。于是我闲的没事用 C# 重写了一遍，并开源了（虽然也没人看）~  
 详细介绍、使用说明请看：https://zhuanlan.zhihu.com/p/79630122
 
 ****
@@ -20,6 +20,17 @@
 ![右键菜单](https://raw.githubusercontent.com/XIU2/TileTool/master/img/02.png)
 > 右键菜单示例
 
+
+## 效果示例
+
+![](https://raw.githubusercontent.com/XIU2/TileTool/master/img/09.png)  
+![](https://raw.githubusercontent.com/XIU2/TileTool/master/img/10.png)  
+![](https://raw.githubusercontent.com/XIU2/TileTool/master/img/03.png)  
+![](https://raw.githubusercontent.com/XIU2/TileTool/master/img/04.png)  
+![](https://raw.githubusercontent.com/XIU2/TileTool/master/img/05.png)  
+![](https://raw.githubusercontent.com/XIU2/TileTool/master/img/06.png)  
+![](https://raw.githubusercontent.com/XIU2/TileTool/master/img/07.png)  
+![](https://raw.githubusercontent.com/XIU2/TileTool/master/img/08.png)  
 
 ****
 
