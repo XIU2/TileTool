@@ -89,6 +89,7 @@
             this.PictureBox_磁贴图片预览.Location = new System.Drawing.Point(423, 41);
             this.PictureBox_磁贴图片预览.Name = "PictureBox_磁贴图片预览";
             this.PictureBox_磁贴图片预览.Size = new System.Drawing.Size(100, 100);
+            this.PictureBox_磁贴图片预览.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PictureBox_磁贴图片预览.TabIndex = 2;
             this.PictureBox_磁贴图片预览.TabStop = false;
             // 
@@ -328,7 +329,7 @@
             this.PictureBox_磁贴图标预览.Location = new System.Drawing.Point(457, 75);
             this.PictureBox_磁贴图标预览.Name = "PictureBox_磁贴图标预览";
             this.PictureBox_磁贴图标预览.Size = new System.Drawing.Size(32, 32);
-            this.PictureBox_磁贴图标预览.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PictureBox_磁贴图标预览.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.PictureBox_磁贴图标预览.TabIndex = 24;
             this.PictureBox_磁贴图标预览.TabStop = false;
             this.PictureBox_磁贴图标预览.Visible = false;
@@ -336,13 +337,14 @@
             // Label_磁贴名称预览
             // 
             this.Label_磁贴名称预览.AutoEllipsis = true;
-            this.Label_磁贴名称预览.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Label_磁贴名称预览.BackColor = System.Drawing.Color.Transparent;
             this.Label_磁贴名称预览.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.Label_磁贴名称预览.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.Label_磁贴名称预览.ForeColor = System.Drawing.SystemColors.Window;
-            this.Label_磁贴名称预览.Location = new System.Drawing.Point(432, 120);
+            this.Label_磁贴名称预览.Location = new System.Drawing.Point(428, 120);
+            this.Label_磁贴名称预览.Margin = new System.Windows.Forms.Padding(0);
             this.Label_磁贴名称预览.Name = "Label_磁贴名称预览";
-            this.Label_磁贴名称预览.Size = new System.Drawing.Size(84, 16);
+            this.Label_磁贴名称预览.Size = new System.Drawing.Size(92, 16);
             this.Label_磁贴名称预览.TabIndex = 25;
             this.Label_磁贴名称预览.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 

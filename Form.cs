@@ -72,6 +72,11 @@ namespace 磁贴美化小工具
             PictureBox_磁贴图片预览.BackColor = PictureBox_磁贴图标预览.BackColor = Label_磁贴名称预览.BackColor = ColorTranslator.FromHtml("#" + SystemColor);
             Recognize_Text_Color(SystemColor);
 
+            // 磁贴预览标签背景透明
+            Label_磁贴名称预览.BackColor = Color.Transparent;
+            Label_磁贴名称预览.Parent = PictureBox_磁贴图片预览;
+            Label_磁贴名称预览.Location = new Point(5, 79);
+
             // 检查是否以管理员身份运行
             IsRunAsAdmin = Other.IsRunAsAdmin();
             if (IsRunAsAdmin)
@@ -686,7 +691,7 @@ namespace 磁贴美化小工具
                     {
                         PictureBox_磁贴图标预览.Image = Bitmap.FromHicon(System.Drawing.Icon.ExtractAssociatedIcon(TextBox_磁贴图标.Text).Handle);
                     }
-                    else if(Path.GetExtension(TextBox_磁贴图标.Text).ToLower() == ".exe")
+                    else if(Path.GetExtension(TextBox_磁贴图标.Text).ToLower() == ".ico")
                     {
                         PictureBox_磁贴图标预览.Image = Bitmap.FromHicon(new Icon(TextBox_磁贴图标.Text, new Size(32, 32)).Handle);
                     }
