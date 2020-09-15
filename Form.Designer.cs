@@ -280,7 +280,7 @@
             this.Button_查看磁贴目录.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Button_查看磁贴目录.Font = new System.Drawing.Font("微软雅黑", 8F);
             this.Button_查看磁贴目录.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.Button_查看磁贴目录.Location = new System.Drawing.Point(141, 205);
+            this.Button_查看磁贴目录.Location = new System.Drawing.Point(282, 205);
             this.Button_查看磁贴目录.Name = "Button_查看磁贴目录";
             this.Button_查看磁贴目录.Size = new System.Drawing.Size(140, 22);
             this.Button_查看磁贴目录.TabIndex = 21;
@@ -297,7 +297,7 @@
             this.Button_自动检查更新.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Button_自动检查更新.Font = new System.Drawing.Font("微软雅黑", 8F);
             this.Button_自动检查更新.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.Button_自动检查更新.Location = new System.Drawing.Point(282, 205);
+            this.Button_自动检查更新.Location = new System.Drawing.Point(141, 205);
             this.Button_自动检查更新.Name = "Button_自动检查更新";
             this.Button_自动检查更新.Size = new System.Drawing.Size(140, 22);
             this.Button_自动检查更新.TabIndex = 22;

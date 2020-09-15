@@ -5,13 +5,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.Xml.Linq;
-using Microsoft.Win32;
 using WebClient_cs;
 using FileDropAdmin_cs;
 using AppConfig_cs;
 using Other_cs;
 using Registry_cs;
-
 
 namespace 磁贴美化小工具
 {
@@ -459,10 +457,16 @@ namespace 磁贴美化小工具
             {
                 ProcessStartInfo Tile = new ProcessStartInfo
                 {
-                    FileName = "runas.exe",
-                    WindowStyle = ProcessWindowStyle.Hidden,
-                    Arguments = "/trustlevel:0x20000" + '"' + Application.StartupPath + @"\syspin.dll " + @"\" + '"' + TextBox_程序路径.Text + @"\" + '"' + " 51201" + '"'
+                    //FileName = "runas.exe",
+                    FileName = Application.StartupPath + @"\syspin.dll",
+                    //WindowStyle = ProcessWindowStyle.Hidden,
+                    UseShellExecute = false,
+                    CreateNoWindow = true,
+                    Verb = "explorer",
+                    //Arguments = "/trustlevel:0x20000 " + '"' + @"\" + '"' + Application.StartupPath + @"\syspin.dll" + @"\" + '"' + " " + @"\" + '"' + TextBox_程序路径.Text + @"\" + '"' + " 51201" + '"'
+                    Arguments = '"' + TextBox_程序路径.Text + '"' + " 51201"
                 };
+                //Debug.Print(Tile.Arguments);
                 Process.Start(Tile);
             }
             else
@@ -496,7 +500,7 @@ namespace 磁贴美化小工具
         {
             if (TextBox_程序路径.Text != "" && System.IO.File.Exists(TextBox_程序路径.Text))
             {
-                _ = Process.Start("explorer.exe", "/select," + TextBox_程序路径.Text);
+                _ = Process.Start("explorer", "/select," + TextBox_程序路径.Text);
             }
         }
         
@@ -589,7 +593,7 @@ namespace 磁贴美化小工具
 
         private void Button_查看磁贴目录_Click(object sender, EventArgs e) // 查看磁贴目录
         {
-            _ = Process.Start("explorer.exe", "/e," + System.Environment.GetFolderPath(System.Environment.SpecialFolder.Programs));
+            _ = Process.Start(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Programs));
         }
         
         private void Button_自动检查更新_Click(object sender, EventArgs e) // 自动检查更新
@@ -669,26 +673,31 @@ namespace 磁贴美化小工具
                     Temp_Shortcut_Path = File_cs.Shortcut.Get_Shortcut_TargetPath_Array(File_cs.File.File_Enumeration(System.Environment.GetFolderPath(System.Environment.SpecialFolder.CommonPrograms), "*.lnk", true), TextBox_程序路径.Text);
                 }
                 // 如果找到了磁贴快捷方式，就设置全局变量 快捷方式文件名、快捷方式路径
-                if (Temp_Shortcut_Path != "")
+                if (Temp_Shortcut_Path != null)
                 {
                     Old_Shortcut_Path = Temp_Shortcut_Path;
-                    Debug.Print(Old_Shortcut_Path);
+                    //Debug.Print(Old_Shortcut_Path);
                     Temp_Shortcut_Name = Path.GetFileNameWithoutExtension(Temp_Shortcut_Path);
-                    Debug.Print(Temp_Shortcut_Name);
+                    //Debug.Print(Temp_Shortcut_Name);
                 }
                 else
                 {
                     Old_Shortcut_Path = Temp_Shortcut_Name = "";
                 }
                 // 如果快捷方式文件名为空，则磁贴名称设置为程序文件名
-                if(Temp_Shortcut_Name != "")
+                if (Temp_Shortcut_Name != "")
                 {
                     TextBox_磁贴名称.Text = Temp_Shortcut_Name;
+                    if (TextBox_磁贴名称.Text == "")
+                    {
+                        TextBox_磁贴名称.Text = Path.GetFileNameWithoutExtension(TextBox_程序路径.Text);
+                    }
                 }
                 else
                 {
                     TextBox_磁贴名称.Text = Path.GetFileNameWithoutExtension(TextBox_程序路径.Text);
                 }
+                Debug.Print("333" + TextBox_磁贴名称.Text);
                 // 设置程序配置文件路径
                 Config_Path = Path.GetDirectoryName(TextBox_程序路径.Text) + @"\" + Path.GetFileNameWithoutExtension(TextBox_程序路径.Text) + ".VisualElementsManifest.xml";
                 Debug.Print(Config_Path);
