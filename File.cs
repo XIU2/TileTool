@@ -33,6 +33,7 @@ namespace File_cs
             {
                 foreach (string Temp_Shortcut_Path in Shortcut_Path)
                 {
+                    Debug.Print(Temp_Shortcut_Path);
                     if (Get_Shortcut_TargetPath(Temp_Shortcut_Path) == Path)
                     {
                         return Temp_Shortcut_Path;
@@ -70,10 +71,6 @@ namespace File_cs
         /// <returns>返回 找到的文件数组（完整路径）</returns>
         public static string[] File_Enumeration(string Path, string FileName, bool Traversal)
         {
-            if (Path.Substring(Path.Length - 1, 1) != @"\")
-            {
-                Path += @"\";
-            }
             if (Traversal == true)
             {
                 return System.IO.Directory.GetFiles(Path, FileName, System.IO.SearchOption.AllDirectories);

@@ -664,14 +664,16 @@ namespace 磁贴美化小工具
             TextBox_程序路径_Leave_2();
             if (TextBox_程序路径.Text != "")
             {
+                string Temp_Shortcut_Path;
                 string Temp_Shortcut_Name; // 临时快捷方式文件名
                 Button_添加磁贴.Enabled = Button_查看.Enabled = Button_初始化.Enabled = true; // 程序路径不等于空时，允许添加磁贴等按钮
-                string Temp_Shortcut_Path = File_cs.Shortcut.Get_Shortcut_TargetPath_Array(File_cs.File.File_Enumeration(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Programs), "*.lnk", true), TextBox_程序路径.Text);
+                Temp_Shortcut_Path = File_cs.Shortcut.Get_Shortcut_TargetPath_Array(File_cs.File.File_Enumeration(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Programs), "*.lnk", true), TextBox_程序路径.Text);
                 // 如果没找到磁贴快捷方式，那就去所有用户的程序目录找下
-                if(Temp_Shortcut_Path == "")
+                if (Temp_Shortcut_Path == null)
                 {
                     Temp_Shortcut_Path = File_cs.Shortcut.Get_Shortcut_TargetPath_Array(File_cs.File.File_Enumeration(System.Environment.GetFolderPath(System.Environment.SpecialFolder.CommonPrograms), "*.lnk", true), TextBox_程序路径.Text);
                 }
+                //Debug.Print("Temp_Shortcut_Path " + Temp_Shortcut_Path);
                 // 如果找到了磁贴快捷方式，就设置全局变量 快捷方式文件名、快捷方式路径
                 if (Temp_Shortcut_Path != null)
                 {
