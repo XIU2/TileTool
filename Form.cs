@@ -68,7 +68,7 @@ namespace 磁贴美化小工具
             Check_Dll();
 
             // 获取主题色并设置图片框背景颜色
-            SystemColor = Get_SystemColor();
+            SystemColor = Registry_SystemColor.Get_SystemColor();
             PictureBox_磁贴图片预览.BackColor = PictureBox_磁贴图标预览.BackColor = Label_磁贴名称预览.BackColor = ColorTranslator.FromHtml("#" + SystemColor);
             Recognize_Text_Color(SystemColor);
 
@@ -124,15 +124,69 @@ namespace 磁贴美化小工具
             }
         }
         
-        private void Recognize_Text_Color(string strHxColor) // 智能识别文字颜色
+        private void Recognize_Text_Color(string strHxColor = "") // 智能识别文字颜色
         {
-            if (Convert.ToInt32(strHxColor.Substring(0, 2), 16) * 0.299 + Convert.ToInt32(strHxColor.Substring(2, 2), 16) * 0.578 + Convert.ToInt32(strHxColor.Substring(4, 2), 16) * 0.114 >= 168)
+            if (PictureBox_磁贴图片预览.Image == null)
             {
-                Label_磁贴名称预览.ForeColor = Color.Black;
+                if (Convert.ToInt32(strHxColor.Substring(0, 2), 16) * 0.299 + Convert.ToInt32(strHxColor.Substring(2, 2), 16) * 0.578 + Convert.ToInt32(strHxColor.Substring(4, 2), 16) * 0.114 >= 168)
+                {
+                    Label_磁贴名称预览.ForeColor = Color.Black;
+                }
+                else
+                {
+                    Label_磁贴名称预览.ForeColor = Color.White;
+                }
             }
             else
             {
-                Label_磁贴名称预览.ForeColor = Color.White;
+                // 创建一份磁贴(预览框)背景颜色的 Bitmap，用来在遇到有透明图层(png)的图片时，透明的像素点以背景颜色为准，保证磁贴颜色识别准确
+                Bitmap BackColor = new Bitmap(100, 100);
+                Graphics Temp_BackColor = Graphics.FromImage(BackColor);
+                Temp_BackColor.Clear(PictureBox_磁贴图片预览.BackColor);
+                Temp_BackColor.Dispose();
+                Color Back_PixelColor = BackColor.GetPixel(50, 50);
+
+                Bitmap ImageColor = (Bitmap)PictureBox_磁贴图片预览.Image;
+                ImageColor.SetResolution(100, 100);
+                double Red = 0, Green = 0, Blue = 0;
+                //double Alpha = 0;
+                for (int temp_y = 0; temp_y < 16; temp_y++)
+                {
+                    for (int temp_x = 0; temp_x < 92; temp_x++)
+                    {
+                        Color Image_PixelColor = ImageColor.GetPixel(5 + temp_x, 79 + temp_y);
+                        if (Image_PixelColor.A == 0)
+                        {
+                            //Alpha += Back_PixelColor.A;
+                            Red += Back_PixelColor.R;
+                            Green += Back_PixelColor.G;
+                            Blue += Back_PixelColor.B;
+                            //Debug.Print(Alpha.ToString() + " " + Red.ToString() + " " + Green.ToString() + " " + Blue.ToString() + " " + (Red * 0.299 + Green * 0.578 + Blue * 0.114).ToString());
+                        }
+                        else
+                        {
+                            //Alpha += Image_PixelColor.A;
+                            Red += Image_PixelColor.R;
+                            Green += Image_PixelColor.G;
+                            Blue += Image_PixelColor.B;
+                        }
+                    }
+                }
+                //BackColor.Dispose();
+                //ImageColor.Dispose();
+                //Alpha /= 1472;
+                Red /= 1472;
+                Green /= 1472;
+                Blue /= 1472;
+                //Debug.Print(Alpha.ToString() + " " + Red.ToString() + " " + Green.ToString() + " " + Blue.ToString() + " " + (Red * 0.299 + Green * 0.578 + Blue * 0.114).ToString());
+                if (Red * 0.299 + Green * 0.578 + Blue * 0.114 >= 168)
+                {
+                    Label_磁贴名称预览.ForeColor = Color.Black;
+                }
+                else
+                {
+                    Label_磁贴名称预览.ForeColor = Color.White;
+                }
             }
         }
         
@@ -167,7 +221,14 @@ namespace 磁贴美化小工具
         
         private void Form_DragEnter(object sender, DragEventArgs e) // 拖放
         {
-            e.Effect = DragDropEffects.Link;
+            if (IsRunAsAdmin)
+            {
+                e.Effect = DragDropEffects.All;
+            }
+            else
+            {
+                e.Effect = DragDropEffects.Link;
+            }
         }
         
         private void Form_DragDrop(object sender, DragEventArgs e) // 收到拖放，判断当前是不是以管理员身份运行
@@ -557,11 +618,6 @@ namespace 磁贴美化小工具
             }
         }
         
-        private string Get_SystemColor() // 获取主题色，返回：HEX颜色值（不带#）
-        {
-            return ((int)Registry.GetValue(@"HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\DWM", "ColorizationColor", 1052688)).ToString("x8").Substring(2);
-        }
-        
         private void Check_Update(bool Tip) // 检查更新
         {
             string strHTML = GetHTTP.Get_HTTP("https://api.xiuer.pw/ver/win10kscdmhxgj.txt", 10000, "utf-8");
@@ -662,6 +718,7 @@ namespace 磁贴美化小工具
                 if (System.IO.File.Exists(TextBox_磁贴图片.Text))
                 {
                     PictureBox_磁贴图片预览.Image = Image.FromFile(TextBox_磁贴图片.Text);
+                    Recognize_Text_Color(); // 识别图片颜色
                     TextBox_磁贴图标.Text = "";
                     PictureBox_磁贴图标预览.Image = null;
                     TextBox_磁贴图标_Leave_2();

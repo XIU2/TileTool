@@ -77,7 +77,7 @@ namespace FileDropAdmin_cs
             if (!ChangeWindowMessageFilterEx(containerControl.Handle, WM_DROPFILES, ChangeFilterAction.MSGFLT_ALLOW, in status)) throw new Win32Exception(Marshal.GetLastWin32Error());
             if (!ChangeWindowMessageFilterEx(containerControl.Handle, WM_COPYGLOBALDATA, ChangeFilterAction.MSGFLT_ALLOW, in status)) throw new Win32Exception(Marshal.GetLastWin32Error());
             if (!ChangeWindowMessageFilterEx(containerControl.Handle, WM_COPYDATA, ChangeFilterAction.MSGFLT_ALLOW, in status)) throw new Win32Exception(Marshal.GetLastWin32Error());
-            DragAcceptFiles(containerControl.Handle, true);
+            DragAcceptFiles(containerControl.Handle, true); // 允许控件接收拖放消息
 
             Application.AddMessageFilter(this);
         }
@@ -90,27 +90,29 @@ namespace FileDropAdmin_cs
             {
                 var handle = m.WParam;
 
-                var fileCount = DragQueryFile(handle, GetIndexCount, null, 0);
+                var fileCount = DragQueryFile(handle, GetIndexCount, null, 0); // 获取拖放进来的文件数量
                 //Debug.Print(fileCount.ToString());
-                var fileNames = new string[fileCount];
-                //Debug.Print(fileNames[1]);
-                var sb = new StringBuilder(262);
+                var fileNames = new string[fileCount]; // 创建数组
+                var sb = new StringBuilder(262); // 创建缓冲区
                 var charLength = sb.Capacity;
-                for (uint i = 0; i < fileCount; i++)
+                for (uint i = 0; i < fileCount; i++) // 循环添加到数组中
                 {
-                    if (DragQueryFile(handle, i, sb, charLength) > 0) fileNames[i] = sb.ToString();
-                    //Debug.Print(fileNames[i]);
+                    if (DragQueryFile(handle, i, sb, charLength) > 0) // 判断是否为空
+                    {
+                        fileNames[i] = sb.ToString(); // 获取拖放进来的文件名
+                        //Debug.Print(fileNames[i]);
+                    }
                 }
-                DragFinish(handle);
-                _ContainerControl.AllowDrop = true;
-                _ContainerControl.DoDragDrop(fileNames, DragDropEffects.All);
-                _ContainerControl.AllowDrop = false;
+                DragFinish(handle); // 拖放结束，释放缓冲区
+                _ContainerControl.AllowDrop = true; // 开启控件的允许拖放选项
+                _ContainerControl.DoDragDrop(fileNames, DragDropEffects.All); // 执行拖放操作
+                _ContainerControl.AllowDrop = false; // 关闭控件的允许拖放选项
                 return true;
             }
             return false;
         }
 
-        public void Dispose()
+        public void Dispose() // 释放
         {
             if (_ContainerControl == null)
             {

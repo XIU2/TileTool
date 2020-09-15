@@ -6,7 +6,14 @@ namespace WebClient_cs
 {
     public class GetHTTP
     {
-        public static string Get_HTTP(string Url, int TimeOut, string Encoding = "utf-8") // 获取HTTP，返回：网页内容，参数：URL、超时时间(毫秒)、编码(默认utf-8)
+        /// <summary>
+        /// 获取HTTP
+        /// </summary>
+        /// <param name="URL">URL</param>
+        /// <param name="TimeOut">超时时间，默认：60000 毫秒，单位：毫秒</param>
+        /// <param name="Encoding">编码，默认：utf-8</param>
+        /// <returns>成功返回网页内容，失败返回 null</returns>
+        public static string Get_HTTP(string Url, int TimeOut, string Encoding = "utf-8")
         {
             NewWebClient myWebClient = new NewWebClient(TimeOut);
             Stream myStream = myWebClient.OpenRead(Url);

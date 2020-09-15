@@ -6,7 +6,14 @@ namespace AppConfig_cs
 {
     public class AppConfig
     {
-        public static string GetValue(string Key, string Default, string ConfigPath) // 读取程序自身配置文件，返回：值，参数：项、默认值、配置文件路径
+        /// <summary>
+        /// 读取程序自身配置文件
+        /// </summary>
+        /// <param name="Key">项</param>
+        /// <param name="Default">默认值，为空是返回</param>
+        /// <param name="ConfigPath">配置文件路径</param>
+        /// <returns>成功返回项的值，值为空返回 Default 参数</returns>
+        public static string GetValue(string Key, string Default, string ConfigPath)
         {
             if (!File.Exists(ConfigPath))
             {
@@ -20,7 +27,13 @@ namespace AppConfig_cs
             return App_Config.AppSettings.Settings[Key].Value;
         }
 
-        public static void SetValue(string Key, string Value, string ConfigPath) // 写出程序自身配置文件，无返回，参数：项、值、配置文件路径
+        /// <summary>
+        /// 写出程序自身配置文件
+        /// </summary>
+        /// <param name="Key">项</param>
+        /// <param name="Value">值</param>
+        /// <param name="ConfigPath">配置文件路径</param>
+        public static void SetValue(string Key, string Value, string ConfigPath)
         {
             if (!File.Exists(ConfigPath))
             {
