@@ -166,10 +166,10 @@ namespace Registry_cs
         /// <returns>浅色模式返回 true，深色模式返回 false</returns>
         public static bool Get_SystemUsesLightTheme()
         {
-            if (Convert.ToInt32(Registry_SystemVersion.Get_DisplayVersion()) < 1903 && Convert.ToInt32(Registry_SystemVersion.Get_ReleaseId()) < 1903)
+            /*if (Convert.ToInt32(Registry_SystemVersion.Get_ReleaseId()) < 1903)
             {
                 return false;
-            }
+            }*/
             // 浅色模式下开始菜单磁贴背景颜色强制为白色（浅色为1，深色为 0）
             if ((int)Registry.GetValue(@"HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize", "SystemUsesLightTheme", 0) == 1)
             {
