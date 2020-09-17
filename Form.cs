@@ -728,6 +728,10 @@ namespace 磁贴美化小工具
             {
                 if (System.IO.File.Exists(TextBox_磁贴图片.Text))
                 {
+                    if (PictureBox_磁贴图片预览.Image != null)
+                    {
+                        PictureBox_磁贴图片预览.Image.Dispose();
+                    }
                     PictureBox_磁贴图片预览.Image = Image.FromFile(TextBox_磁贴图片.Text);
                     Recognize_Text_Color(); // 识别图片颜色
                     TextBox_磁贴图标.Text = "";
@@ -872,6 +876,10 @@ namespace 磁贴美化小工具
             if (TextBox_磁贴图片.Text == "")
             {
                 TextBox_磁贴图片.SendToBack();
+                if (PictureBox_磁贴图片预览.Image != null)
+                {
+                    PictureBox_磁贴图片预览.Image.Dispose();
+                }
             }
             else
             {
