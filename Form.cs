@@ -71,7 +71,7 @@ namespace 磁贴美化小工具
             SystemColor = "#" + Registry_SystemColor.Get_SystemColor();
             PictureBox_磁贴图片预览.BackColor = ColorTranslator.FromHtml(SystemColor);
             NewTileState = Registry_Other.Get_NewTileState(); // 获取是否开启 2004 新版磁贴样式
-            Debug.Print(NewTileState.ToString());
+            //Debug.Print(NewTileState.ToString());
 
             // 磁贴预览标签背景透明
             Label_磁贴名称预览.BackColor = Color.Transparent;
@@ -362,7 +362,7 @@ namespace 磁贴美化小工具
             string Temp_Square150x150Logo;
 
             // 磁贴背景颜色
-            if (UserColor == "")
+            if (UserColor == "" || UserColor == null)
             {
                 Temp_BackgroundColor = SystemColor;
             }
@@ -400,6 +400,7 @@ namespace 磁贴美化小工具
             {
                 Temp_Square150x150Logo = Path.GetFileNameWithoutExtension(TextBox_程序路径.Text) + ".150x150Logo" + Path.GetExtension(TextBox_磁贴图片.Text);
             }
+            Debug.Print(Temp_BackgroundColor + "|" + Temp_ShowNameOnSquare150x150Logo + "|" + Temp_ForegroundText + "|" + Temp_Square150x150Logo + "|" + TextBox_磁贴图标.Text);
             // 开始写入配置
             XElement XML_Application = new XElement("Application",
                     new XAttribute(XNamespace.Xmlns + "xsi", "http://www.w3.org/2001/XMLSchema-instance"));
@@ -420,8 +421,8 @@ namespace 磁贴美化小工具
         {
             if (TextBox_磁贴图片.Text != "") // 图片路径不等于空时继续
             {
-                Debug.Print(TextBox_磁贴图片.Text);
-                Debug.Print(Old_Square150x150Logo_Path);
+                //Debug.Print(TextBox_磁贴图片.Text);
+                //Debug.Print(Old_Square150x150Logo_Path);
                 if (TextBox_磁贴图片.Text != Old_Square150x150Logo_Path) // 如果图片已更改，则复制到程序目录下。
                 {
                     System.IO.File.Copy(TextBox_磁贴图片.Text, Path.GetDirectoryName(TextBox_程序路径.Text) + @"\" + Path.GetFileNameWithoutExtension(TextBox_程序路径.Text) + ".150x150Logo" + Path.GetExtension(TextBox_磁贴图片.Text), true);
