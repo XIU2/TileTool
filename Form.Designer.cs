@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form));
             this.TextBox_程序路径 = new System.Windows.Forms.TextBox();
             this.Label_程序路径 = new System.Windows.Forms.Label();
@@ -48,6 +49,7 @@
             this.Button_检查更新 = new System.Windows.Forms.Button();
             this.PictureBox_磁贴图标预览 = new System.Windows.Forms.PictureBox();
             this.Label_磁贴名称预览 = new System.Windows.Forms.Label();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox_磁贴图片预览)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox_磁贴图标预览)).BeginInit();
             this.SuspendLayout();
@@ -64,6 +66,7 @@
             this.TextBox_程序路径.Size = new System.Drawing.Size(390, 18);
             this.TextBox_程序路径.TabIndex = 0;
             this.TextBox_程序路径.TabStop = false;
+            this.toolTip.SetToolTip(this.TextBox_程序路径, "拖入 [应用程序、快捷方式、开始菜单磁贴(非UWP)]\r\n按下 [退格键(Backspace)] 可清空。");
             this.TextBox_程序路径.TextChanged += new System.EventHandler(this.TextBox_程序路径_TextChanged);
             this.TextBox_程序路径.Enter += new System.EventHandler(this.TextBox_程序路径_Enter);
             this.TextBox_程序路径.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_程序路径_KeyPress);
@@ -73,6 +76,7 @@
             // 
             this.Label_程序路径.BackColor = System.Drawing.Color.WhiteSmoke;
             this.Label_程序路径.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.Label_程序路径.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Label_程序路径.Font = new System.Drawing.Font("微软雅黑", 10F);
             this.Label_程序路径.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.Label_程序路径.Location = new System.Drawing.Point(-8, 0);
@@ -81,6 +85,7 @@
             this.Label_程序路径.TabIndex = 1;
             this.Label_程序路径.Text = "     程序路径";
             this.Label_程序路径.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.toolTip.SetToolTip(this.Label_程序路径, "拖入 [应用程序、快捷方式、开始菜单磁贴(非UWP)]\r\n按下 [退格键(Backspace)] 可清空。");
             this.Label_程序路径.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Label_程序路径_MouseClick);
             // 
             // PictureBox_磁贴图片预览
@@ -92,6 +97,13 @@
             this.PictureBox_磁贴图片预览.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PictureBox_磁贴图片预览.TabIndex = 2;
             this.PictureBox_磁贴图片预览.TabStop = false;
+            this.toolTip.SetToolTip(this.PictureBox_磁贴图片预览, "磁贴预览框：\r\n按下 [鼠标左键] 开始屏幕取色，松开 [鼠标左键] 停止取色。\r\n单击 [鼠标右键] 重置为系统主题色。\r\n\r\n注意：开启 2004 新版磁贴样" +
+        "式后无法使用 [屏幕取色] 功能。\r\n注意：图标预览时可能会出现锯齿等显示问题，但实际磁贴显示正常！");
+            this.PictureBox_磁贴图片预览.BackColorChanged += new System.EventHandler(this.PictureBox_磁贴图片预览_BackColorChanged);
+            this.PictureBox_磁贴图片预览.MouseClick += new System.Windows.Forms.MouseEventHandler(this.PictureBox_磁贴图片预览_MouseClick);
+            this.PictureBox_磁贴图片预览.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PictureBox_磁贴图片预览_MouseDown);
+            this.PictureBox_磁贴图片预览.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PictureBox_磁贴图片预览_MouseMove);
+            this.PictureBox_磁贴图片预览.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PictureBox_磁贴图片预览_MouseUp);
             // 
             // TextBox_磁贴名称
             // 
@@ -104,6 +116,7 @@
             this.TextBox_磁贴名称.Size = new System.Drawing.Size(390, 18);
             this.TextBox_磁贴名称.TabIndex = 1;
             this.TextBox_磁贴名称.TabStop = false;
+            this.toolTip.SetToolTip(this.TextBox_磁贴名称, "磁贴显示的文字");
             this.TextBox_磁贴名称.TextChanged += new System.EventHandler(this.TextBox_磁贴名称_TextChanged);
             this.TextBox_磁贴名称.Enter += new System.EventHandler(this.TextBox_磁贴名称_Enter);
             this.TextBox_磁贴名称.Leave += new System.EventHandler(this.TextBox_磁贴名称_Leave);
@@ -112,6 +125,7 @@
             // 
             this.Label_磁贴名称.BackColor = System.Drawing.Color.WhiteSmoke;
             this.Label_磁贴名称.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.Label_磁贴名称.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Label_磁贴名称.Font = new System.Drawing.Font("微软雅黑", 10F);
             this.Label_磁贴名称.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.Label_磁贴名称.Location = new System.Drawing.Point(-8, 41);
@@ -120,6 +134,7 @@
             this.Label_磁贴名称.TabIndex = 4;
             this.Label_磁贴名称.Text = "     磁贴名称";
             this.Label_磁贴名称.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.toolTip.SetToolTip(this.Label_磁贴名称, "磁贴显示的文字");
             this.Label_磁贴名称.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Label_磁贴名称_MouseClick);
             // 
             // TextBox_磁贴图片
@@ -134,6 +149,7 @@
             this.TextBox_磁贴图片.Size = new System.Drawing.Size(390, 18);
             this.TextBox_磁贴图片.TabIndex = 2;
             this.TextBox_磁贴图片.TabStop = false;
+            this.toolTip.SetToolTip(this.TextBox_磁贴图片, "拖入 [图片文件( .png .jpg .jpeg )]，与磁贴图标二选一\r\n按下 [退格键(Backspace)] 可清空。\r\n");
             this.TextBox_磁贴图片.TextChanged += new System.EventHandler(this.TextBox_磁贴图片_TextChanged);
             this.TextBox_磁贴图片.Enter += new System.EventHandler(this.TextBox_磁贴图片_Enter);
             this.TextBox_磁贴图片.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_磁贴图片_KeyPress);
@@ -143,6 +159,7 @@
             // 
             this.Label_磁贴图片.BackColor = System.Drawing.Color.WhiteSmoke;
             this.Label_磁贴图片.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.Label_磁贴图片.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Label_磁贴图片.Font = new System.Drawing.Font("微软雅黑", 10F);
             this.Label_磁贴图片.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.Label_磁贴图片.Location = new System.Drawing.Point(-8, 82);
@@ -151,6 +168,7 @@
             this.Label_磁贴图片.TabIndex = 6;
             this.Label_磁贴图片.Text = "     磁贴图片";
             this.Label_磁贴图片.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.toolTip.SetToolTip(this.Label_磁贴图片, "拖入 [图片文件( .png .jpg .jpeg )]，与磁贴图标二选一\r\n按下 [退格键(Backspace)] 可清空。");
             this.Label_磁贴图片.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Label_磁贴图片_MouseClick);
             // 
             // TextBox_磁贴图标
@@ -165,6 +183,7 @@
             this.TextBox_磁贴图标.Size = new System.Drawing.Size(390, 18);
             this.TextBox_磁贴图标.TabIndex = 3;
             this.TextBox_磁贴图标.TabStop = false;
+            this.toolTip.SetToolTip(this.TextBox_磁贴图标, "拖入 [图标文件( .ico )]，与磁贴图片二选一\r\n按下 [退格键(Backspace)] 可清空。\r\n");
             this.TextBox_磁贴图标.TextChanged += new System.EventHandler(this.TextBox_磁贴图标_TextChanged);
             this.TextBox_磁贴图标.Enter += new System.EventHandler(this.TextBox_磁贴图标_Enter);
             this.TextBox_磁贴图标.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_磁贴图标_KeyPress);
@@ -174,6 +193,7 @@
             // 
             this.Label_磁贴图标.BackColor = System.Drawing.Color.WhiteSmoke;
             this.Label_磁贴图标.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.Label_磁贴图标.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Label_磁贴图标.Font = new System.Drawing.Font("微软雅黑", 10F);
             this.Label_磁贴图标.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.Label_磁贴图标.Location = new System.Drawing.Point(-8, 123);
@@ -182,11 +202,12 @@
             this.Label_磁贴图标.TabIndex = 8;
             this.Label_磁贴图标.Text = "     磁贴图标  与磁贴图片二选一";
             this.Label_磁贴图标.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.toolTip.SetToolTip(this.Label_磁贴图标, "拖入 [图标文件( .ico )]，与磁贴图片二选一\r\n按下 [退格键(Backspace)] 可清空。");
             this.Label_磁贴图标.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Label_磁贴图标_MouseClick);
             // 
             // Button_添加磁贴
             // 
-            this.Button_添加磁贴.BackColor = System.Drawing.Color.Gainsboro;
+            this.Button_添加磁贴.BackColor = System.Drawing.Color.LightGray;
             this.Button_添加磁贴.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Button_添加磁贴.Enabled = false;
             this.Button_添加磁贴.FlatAppearance.BorderSize = 0;
@@ -199,6 +220,7 @@
             this.Button_添加磁贴.TabIndex = 9;
             this.Button_添加磁贴.TabStop = false;
             this.Button_添加磁贴.Text = "添加/更新磁贴";
+            this.toolTip.SetToolTip(this.Button_添加磁贴, "点击后添加或更新磁贴\r\n\r\n注意：C:\\Program Files 等权限敏感目录下的程序，需要 [以管理员身份运行] 本软件才能添加/更新磁贴！");
             this.Button_添加磁贴.UseVisualStyleBackColor = false;
             this.Button_添加磁贴.Click += new System.EventHandler(this.Button_添加磁贴_Click);
             // 
@@ -217,6 +239,7 @@
             this.Button_查看.TabStop = false;
             this.Button_查看.Text = "查看";
             this.Button_查看.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolTip.SetToolTip(this.Button_查看, "打开程序所在文件夹");
             this.Button_查看.UseVisualStyleBackColor = false;
             this.Button_查看.Click += new System.EventHandler(this.Button_查看_Click);
             // 
@@ -234,6 +257,7 @@
             this.Button_初始化.TabIndex = 18;
             this.Button_初始化.TabStop = false;
             this.Button_初始化.Text = "初始化";
+            this.toolTip.SetToolTip(this.Button_初始化, "初始化磁贴配置文件");
             this.Button_初始化.UseVisualStyleBackColor = false;
             this.Button_初始化.Click += new System.EventHandler(this.Button_初始化_Click);
             // 
@@ -251,9 +275,11 @@
             this.Button_显示文字.TabIndex = 19;
             this.Button_显示文字.TabStop = false;
             this.Button_显示文字.Text = "隐藏文字";
+            this.toolTip.SetToolTip(this.Button_显示文字, "显示或隐藏磁贴文字");
             this.Button_显示文字.UseVisualStyleBackColor = false;
             this.Button_显示文字.TextChanged += new System.EventHandler(this.Button_显示文字_TextChanged);
             this.Button_显示文字.Click += new System.EventHandler(this.Button_显示文字_Click);
+            this.Button_显示文字.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PictureBox_磁贴图片预览_MouseDown);
             // 
             // Button_添加右键菜单
             // 
@@ -269,6 +295,7 @@
             this.Button_添加右键菜单.TabIndex = 20;
             this.Button_添加右键菜单.TabStop = false;
             this.Button_添加右键菜单.Text = "添加右键菜单 [√]";
+            this.toolTip.SetToolTip(this.Button_添加右键菜单, "开启后，右键任意 应用程序(.exe)、快捷方式(.lnk) 可看到 [自定义并固定到\"开始\"屏幕]\r\n[√]：添加右键菜单\r\n[×]：取消右键菜单（即未添加）");
             this.Button_添加右键菜单.UseVisualStyleBackColor = false;
             this.Button_添加右键菜单.Click += new System.EventHandler(this.Button_添加右键菜单_Click);
             // 
@@ -286,6 +313,7 @@
             this.Button_查看磁贴目录.TabIndex = 21;
             this.Button_查看磁贴目录.TabStop = false;
             this.Button_查看磁贴目录.Text = "查看磁贴目录";
+            this.toolTip.SetToolTip(this.Button_查看磁贴目录, "打开磁贴对应的快捷方式所在文件夹");
             this.Button_查看磁贴目录.UseVisualStyleBackColor = false;
             this.Button_查看磁贴目录.Click += new System.EventHandler(this.Button_查看磁贴目录_Click);
             // 
@@ -303,6 +331,7 @@
             this.Button_自动检查更新.TabIndex = 22;
             this.Button_自动检查更新.TabStop = false;
             this.Button_自动检查更新.Text = "自动检查更新 [√]";
+            this.toolTip.SetToolTip(this.Button_自动检查更新, "[√]：启动软件后检查更新\r\n[×]：启动软件后不检查更新");
             this.Button_自动检查更新.UseVisualStyleBackColor = false;
             this.Button_自动检查更新.Click += new System.EventHandler(this.Button_自动检查更新_Click);
             // 
@@ -320,6 +349,7 @@
             this.Button_检查更新.TabIndex = 23;
             this.Button_检查更新.TabStop = false;
             this.Button_检查更新.Text = "检查更新";
+            this.toolTip.SetToolTip(this.Button_检查更新, "立即检查更新");
             this.Button_检查更新.UseVisualStyleBackColor = false;
             this.Button_检查更新.Click += new System.EventHandler(this.Button_检查更新_Click);
             // 
@@ -332,13 +362,20 @@
             this.PictureBox_磁贴图标预览.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.PictureBox_磁贴图标预览.TabIndex = 24;
             this.PictureBox_磁贴图标预览.TabStop = false;
+            this.toolTip.SetToolTip(this.PictureBox_磁贴图标预览, "磁贴预览框：\r\n按下 [鼠标左键] 开始屏幕取色，松开 [鼠标左键] 停止取色。\r\n单击 [鼠标右键] 重置为系统主题色。\r\n\r\n注意：开启 2004 新版磁贴样" +
+        "式后无法使用 [屏幕取色] 功能。\r\n注意：图标预览时可能会出现锯齿等显示问题，但实际磁贴显示正常！");
             this.PictureBox_磁贴图标预览.Visible = false;
+            this.PictureBox_磁贴图标预览.MouseClick += new System.Windows.Forms.MouseEventHandler(this.PictureBox_磁贴图片预览_MouseClick);
+            this.PictureBox_磁贴图标预览.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PictureBox_磁贴图片预览_MouseDown);
+            this.PictureBox_磁贴图标预览.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PictureBox_磁贴图片预览_MouseMove);
+            this.PictureBox_磁贴图标预览.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PictureBox_磁贴图片预览_MouseUp);
             // 
             // Label_磁贴名称预览
             // 
             this.Label_磁贴名称预览.AutoEllipsis = true;
             this.Label_磁贴名称预览.BackColor = System.Drawing.Color.Transparent;
-            this.Label_磁贴名称预览.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.Label_磁贴名称预览.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.Label_磁贴名称预览.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Label_磁贴名称预览.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.Label_磁贴名称预览.ForeColor = System.Drawing.SystemColors.Window;
             this.Label_磁贴名称预览.Location = new System.Drawing.Point(428, 120);
@@ -347,6 +384,20 @@
             this.Label_磁贴名称预览.Size = new System.Drawing.Size(92, 16);
             this.Label_磁贴名称预览.TabIndex = 25;
             this.Label_磁贴名称预览.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.toolTip.SetToolTip(this.Label_磁贴名称预览, "磁贴文字预览：\r\n点击下面的 [显示文字/隐藏文字] 按钮即可切换。\r\n文字颜色会智能识别磁贴图片/背景颜色。");
+            this.Label_磁贴名称预览.MouseClick += new System.Windows.Forms.MouseEventHandler(this.PictureBox_磁贴图片预览_MouseClick);
+            this.Label_磁贴名称预览.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PictureBox_磁贴图片预览_MouseDown);
+            this.Label_磁贴名称预览.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PictureBox_磁贴图片预览_MouseMove);
+            this.Label_磁贴名称预览.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PictureBox_磁贴图片预览_MouseUp);
+            // 
+            // toolTip
+            // 
+            this.toolTip.AutoPopDelay = 10000;
+            this.toolTip.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.toolTip.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.toolTip.InitialDelay = 500;
+            this.toolTip.ReshowDelay = 100;
+            this.toolTip.ShowAlways = true;
             // 
             // Form
             // 
@@ -413,6 +464,7 @@
         private System.Windows.Forms.Button Button_检查更新;
         private System.Windows.Forms.PictureBox PictureBox_磁贴图标预览;
         private System.Windows.Forms.Label Label_磁贴名称预览;
+        private System.Windows.Forms.ToolTip toolTip;
     }
 }
 

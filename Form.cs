@@ -8,7 +8,6 @@ using System.Xml.Linq;
 using WebClient_cs;
 using FileDropAdmin_cs;
 using AppConfig_cs;
-using Other_cs;
 using Registry_cs;
 
 namespace 磁贴美化小工具
@@ -21,8 +20,11 @@ namespace 磁贴美化小工具
         private System.Threading.Mutex newMutex; // 互斥体
         public FileDropAdmin FileDroper; // 管理员权限下拖放文件
         private bool IsRunAsAdmin; // 是否为管理员权限
+        private bool ScreenColorFlag; // 取色
+        private bool NewTileState;
         private string Now_VerInfo; // 软件版本号
         private string SystemColor; // 系统主题色
+        private string UserColor; // 用户颜色
         private string Config_Path; // 磁贴配置文件路径
         private string Old_Shortcut_Path; // 快捷方式文件路径
         private string Old_Square150x150Logo_Path; // 旧图片文件路径
@@ -66,9 +68,10 @@ namespace 磁贴美化小工具
             Check_Dll();
 
             // 获取主题色并设置图片框背景颜色
-            SystemColor = Registry_SystemColor.Get_SystemColor();
-            PictureBox_磁贴图片预览.BackColor = PictureBox_磁贴图标预览.BackColor = Label_磁贴名称预览.BackColor = ColorTranslator.FromHtml("#" + SystemColor);
-            Recognize_Text_Color(SystemColor);
+            SystemColor = "#" + Registry_SystemColor.Get_SystemColor();
+            PictureBox_磁贴图片预览.BackColor = ColorTranslator.FromHtml(SystemColor);
+            NewTileState = Registry_Other.Get_NewTileState(); // 获取是否开启 2004 新版磁贴样式
+            Debug.Print(NewTileState.ToString());
 
             // 磁贴预览标签背景透明
             Label_磁贴名称预览.BackColor = Color.Transparent;
@@ -76,7 +79,7 @@ namespace 磁贴美化小工具
             Label_磁贴名称预览.Location = new Point(5, 79);
 
             // 检查是否以管理员身份运行
-            IsRunAsAdmin = Other.IsRunAsAdmin();
+            IsRunAsAdmin = Other_cs.Other.IsRunAsAdmin();
             if (IsRunAsAdmin)
             {
                 this.AllowDrop = false;
@@ -122,11 +125,11 @@ namespace 磁贴美化小工具
             }
         }
         
-        private void Recognize_Text_Color(string strHxColor = "") // 智能识别文字颜色
+        private void Recognize_Text_Color(byte r = 0, byte g = 0, byte b = 0) // 智能识别文字颜色
         {
             if (PictureBox_磁贴图片预览.Image == null)
             {
-                if (Convert.ToInt32(strHxColor.Substring(0, 2), 16) * 0.299 + Convert.ToInt32(strHxColor.Substring(2, 2), 16) * 0.578 + Convert.ToInt32(strHxColor.Substring(4, 2), 16) * 0.114 >= 168)
+                if (r * 0.299 + g * 0.578 + b * 0.114 >= 168)
                 {
                     Label_磁贴名称预览.ForeColor = Color.Black;
                 }
@@ -283,8 +286,23 @@ namespace 磁贴美化小工具
                 XElement XML_Application = XML_xDoc.Element("Application");
                 XElement XML_VisualElements = XML_Application.Element("VisualElements");
                 //Debug.Print(XML_VisualElements.ToString());
-                //XML_VisualElements.Attribute("BackgroundColor").Value.ToString();
-                if (XML_VisualElements.Attribute("Square150x150Logo") != null) // 显示/隐藏磁贴文字
+                if (XML_VisualElements.Attribute("BackgroundColor") != null) // 磁贴背景颜色
+                {
+                    if (NewTileState == true) // 如果已经开启新版磁贴样式，则使用系统主题色
+                    {
+                        UserColor = SystemColor;
+                    }
+                    else
+                    {
+                        UserColor = XML_VisualElements.Attribute("BackgroundColor").Value.ToString();
+                    }
+                    PictureBox_磁贴图片预览.BackColor = ColorTranslator.FromHtml(UserColor);
+                }
+                else
+                {
+                    PictureBox_磁贴图片预览.BackColor = ColorTranslator.FromHtml(SystemColor);
+                }
+                if (XML_VisualElements.Attribute("ShowNameOnSquare150x150Logo") != null) // 显示/隐藏磁贴文字
                 {
                     if (XML_VisualElements.Attribute("ShowNameOnSquare150x150Logo").Value.ToString() == "off")
                     {
@@ -296,7 +314,7 @@ namespace 磁贴美化小工具
                     }
                 }
                 //XML_VisualElements.Attribute("ForegroundText").Value.ToString();
-                if (XML_VisualElements.Attribute("Square150x150Logo") != null) // 大图
+                if (XML_VisualElements.Attribute("Square150x150Logo") != null) // 磁贴大图
                 {
                     string Temp_Square150x150Logo = XML_VisualElements.Attribute("Square150x150Logo").Value.ToString(); // 获取值
                     if (Temp_Square150x150Logo != "") // 如果不等于空，则判断文件是否存在
@@ -312,11 +330,11 @@ namespace 磁贴美化小工具
                         Old_Square150x150Logo_Path = "";
                     }
                 }
-                /*if (XML_VisualElements.Attribute("Square70x70Logo") != null) // 小图
+                /*if (XML_VisualElements.Attribute("Square70x70Logo") != null) // 磁贴大图
                 {
                     string Temp_Square70x70Logo = XML_VisualElements.Attribute("Square70x70Logo").Value.ToString();
                 }*/
-                if (XML_VisualElements.Attribute("Lnk32x32Logo") != null) // 图标
+                if (XML_VisualElements.Attribute("Lnk32x32Logo") != null) // 磁贴图标
                 {
                     string Temp_Lnk32x32Logo = XML_VisualElements.Attribute("Lnk32x32Logo").Value.ToString(); // 获取值
                     if (Temp_Lnk32x32Logo != "") // 如果不等于空，则判断文件是否存在
@@ -338,9 +356,22 @@ namespace 磁贴美化小工具
         }
         private void Write_Config() // 写出磁贴配置文件
         {
+            string Temp_BackgroundColor;
             string Temp_ShowNameOnSquare150x150Logo;
             string Temp_ForegroundText;
             string Temp_Square150x150Logo;
+
+            // 磁贴背景颜色
+            if (UserColor == "")
+            {
+                Temp_BackgroundColor = SystemColor;
+            }
+            else
+            {
+                Temp_BackgroundColor = UserColor;
+            }
+
+            // 磁贴是否显示文字
             if (Button_显示文字.Text == "显示文字")
             {
                 Temp_ShowNameOnSquare150x150Logo = "off";
@@ -349,6 +380,8 @@ namespace 磁贴美化小工具
             {
                 Temp_ShowNameOnSquare150x150Logo = "on";
             }
+
+            // 磁贴文字颜色
             if (Label_磁贴名称预览.ForeColor == Color.White)
             {
                 Temp_ForegroundText = "light";
@@ -357,6 +390,8 @@ namespace 磁贴美化小工具
             {
                 Temp_ForegroundText = "dark";
             }
+
+            // 磁贴图片
             if (TextBox_磁贴图片.Text == "")
             {
                 Temp_Square150x150Logo = "";
@@ -365,10 +400,11 @@ namespace 磁贴美化小工具
             {
                 Temp_Square150x150Logo = Path.GetFileNameWithoutExtension(TextBox_程序路径.Text) + ".150x150Logo" + Path.GetExtension(TextBox_磁贴图片.Text);
             }
+            // 开始写入配置
             XElement XML_Application = new XElement("Application",
                     new XAttribute(XNamespace.Xmlns + "xsi", "http://www.w3.org/2001/XMLSchema-instance"));
             XElement XML_VisualElements = new XElement("VisualElements",
-                    new XAttribute("BackgroundColor", "#" + SystemColor),
+                    new XAttribute("BackgroundColor", Temp_BackgroundColor),
                     new XAttribute("ShowNameOnSquare150x150Logo", Temp_ShowNameOnSquare150x150Logo),
                     new XAttribute("ForegroundText", Temp_ForegroundText),
                     new XAttribute("Square150x150Logo", Temp_Square150x150Logo),
@@ -376,11 +412,11 @@ namespace 磁贴美化小工具
                     new XAttribute("Lnk32x32Logo", TextBox_磁贴图标.Text)
                     );
             XML_Application.Add(XML_VisualElements);
-            XML_Application.Save(Config_Path); //保存配置文件文件
-            Move_Img();
+            XML_Application.Save(Config_Path); // 保存配置文件文件
+            Copy_Img(); // 复制图片文件
         }
 
-        private void Move_Img() // 移动磁贴图片
+        private void Copy_Img() // 复制磁贴图片
         {
             if (TextBox_磁贴图片.Text != "") // 图片路径不等于空时继续
             {
@@ -699,10 +735,10 @@ namespace 磁贴美化小工具
                 {
                     TextBox_磁贴名称.Text = Path.GetFileNameWithoutExtension(TextBox_程序路径.Text);
                 }
-                Debug.Print("333" + TextBox_磁贴名称.Text);
+                //Debug.Print("333" + TextBox_磁贴名称.Text);
                 // 设置程序配置文件路径
                 Config_Path = Path.GetDirectoryName(TextBox_程序路径.Text) + @"\" + Path.GetFileNameWithoutExtension(TextBox_程序路径.Text) + ".VisualElementsManifest.xml";
-                Debug.Print(Config_Path);
+                //Debug.Print(Config_Path);
                 // 磁贴图片、磁贴图标清空
                 TextBox_磁贴图片.Text = TextBox_磁贴图标.Text = "";
                 PictureBox_磁贴图片预览.Image = PictureBox_磁贴图标预览.Image = null;
@@ -910,6 +946,48 @@ namespace 磁贴美化小工具
             }
             TextBox_磁贴图标.BackColor = Color.WhiteSmoke;
             Label_磁贴图标.BackColor = Color.WhiteSmoke;
+        }
+
+        private void PictureBox_磁贴图片预览_MouseDown(object sender, MouseEventArgs e) // 图片预览框 鼠标按下开始取色
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                if (NewTileState == false)
+                {
+                    PictureBox_磁贴图片预览.Cursor = Cursors.Cross;
+                    ScreenColorFlag = true;
+                }
+            }
+        }
+        private void PictureBox_磁贴图片预览_MouseMove(object sender, MouseEventArgs e) // 图片预览框 鼠标移动 取色
+        {
+            if (ScreenColorFlag)
+            {
+                UserColor = "#" + Other_cs.Color.Get_ScreenColor(MousePosition.X, MousePosition.Y);
+                PictureBox_磁贴图片预览.BackColor = ColorTranslator.FromHtml(UserColor);
+            }
+            
+        }
+        private void PictureBox_磁贴图片预览_MouseUp(object sender, MouseEventArgs e) // 图片预览框 鼠标放开结束取色
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                PictureBox_磁贴图片预览.Cursor = Cursors.Default;
+                ScreenColorFlag = false;
+            }
+        }
+        private void PictureBox_磁贴图片预览_MouseClick(object sender, MouseEventArgs e) // 图片预览框 鼠标右击恢复默认颜色
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                PictureBox_磁贴图片预览.BackColor = ColorTranslator.FromHtml(SystemColor);
+            }
+        }
+
+        private void PictureBox_磁贴图片预览_BackColorChanged(object sender, EventArgs e) // 统一其他预览控件的背景颜色
+        {
+            PictureBox_磁贴图标预览.BackColor = Label_磁贴名称预览.BackColor = PictureBox_磁贴图片预览.BackColor;
+            Recognize_Text_Color(PictureBox_磁贴图片预览.BackColor.R, PictureBox_磁贴图片预览.BackColor.G, PictureBox_磁贴图片预览.BackColor.B); // 智能识别文字颜色
         }
     }
 }

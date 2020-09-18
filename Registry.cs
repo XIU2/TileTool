@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using Microsoft.Win32;
 
 namespace Registry_cs
@@ -241,6 +242,26 @@ namespace Registry_cs
         public static string Get_CurrentBuildNumber()
         {
             return (string)Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion", "CurrentBuildNumber", null);
+        }
+    }
+    public class Registry_Other
+    {
+        /// <summary>
+        /// 获取系统是否开启 2004 新版磁贴样式
+        /// </summary>
+        /// <returns>开启返回 true 关闭返回 false</returns>
+        public static bool Get_NewTileState()
+        {
+            if (Convert.ToInt32(Registry_SystemVersion.Get_ReleaseId()) < 2004)
+            {
+                return false;
+            }
+            Debug.Print(Registry.GetValue(@"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FeatureManagement\Overrides\0\2093230218", "EnabledState", null).ToString());
+            if (Registry.GetValue(@"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FeatureManagement\Overrides\0\2093230218", "EnabledState", null) == null)
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

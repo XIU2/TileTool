@@ -15,4 +15,28 @@ namespace Other_cs
             return principal.IsInRole(WindowsBuiltInRole.Administrator);
         }
     }
+    public class Color
+    {
+        [System.Runtime.InteropServices.DllImport("user32")]
+        private static extern int GetDC(int hwnd); // 获取DC
+        [System.Runtime.InteropServices.DllImport("user32")]
+        private static extern int ReleaseDC(int hwnd, int hdc); // 释放DC
+        [System.Runtime.InteropServices.DllImport("gdi32")]
+        private static extern int GetPixel(int hdc, int x, int y);
+        public static string Get_ScreenColor(int x, int y)
+        {
+            //Debug.Print(x + "," + y); // 把坐标显示到窗口上
+            int Temp_hDc = GetDC(0);
+            int c = GetPixel(Temp_hDc, x, y);
+            int r = (c & 0xFF); // 转换R
+            int g = (c & 0xFF00) / 256; // 转换G
+            int b = (c & 0xFF0000) / 65536; // 转换B
+            //Debug.Print(c.ToString()); // 输出10进制颜色
+            //Debug.Print(r.ToString("x").PadLeft(2, '0') + g.ToString("x").PadLeft(2, '0') + b.ToString("x").PadLeft(2, '0')); // 输出16进制颜色
+            //Debug.Print(r.ToString() + ',' + g.ToString() + ',' + b.ToString()); // 输出RGB
+            //PictureBox_磁贴图片预览.BackColor = Color.FromArgb(r, g, b); //设置颜色框
+            ReleaseDC(0, Temp_hDc);
+            return (r.ToString("x").PadLeft(2, '0') + g.ToString("x").PadLeft(2, '0') + b.ToString("x").PadLeft(2, '0'));
+        }
+    }
 }
