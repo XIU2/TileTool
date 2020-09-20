@@ -23,6 +23,12 @@ namespace Other_cs
         private static extern int ReleaseDC(int hwnd, int hdc); // 释放DC
         [System.Runtime.InteropServices.DllImport("gdi32")]
         private static extern int GetPixel(int hdc, int x, int y);
+        /// <summary>
+        /// 获取屏幕指定像素点HEX颜色值
+        /// </summary>
+        /// <param name="x">X</param>
+        /// <param name="y">Y</param>
+        /// <returns>HEX颜色值，不带 #</returns>
         public static string Get_ScreenColor(int x, int y)
         {
             //Debug.Print(x + "," + y); // 把坐标显示到窗口上
@@ -34,7 +40,6 @@ namespace Other_cs
             //Debug.Print(c.ToString()); // 输出10进制颜色
             //Debug.Print(r.ToString("x").PadLeft(2, '0') + g.ToString("x").PadLeft(2, '0') + b.ToString("x").PadLeft(2, '0')); // 输出16进制颜色
             //Debug.Print(r.ToString() + ',' + g.ToString() + ',' + b.ToString()); // 输出RGB
-            //PictureBox_磁贴图片预览.BackColor = Color.FromArgb(r, g, b); //设置颜色框
             ReleaseDC(0, Temp_hDc);
             return (r.ToString("x").PadLeft(2, '0') + g.ToString("x").PadLeft(2, '0') + b.ToString("x").PadLeft(2, '0'));
         }

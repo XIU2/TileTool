@@ -33,7 +33,7 @@ namespace File_cs
             {
                 foreach (string Temp_Shortcut_Path in Shortcut_Path)
                 {
-                    Debug.Print(Temp_Shortcut_Path);
+                    //Debug.Print(Temp_Shortcut_Path);
                     if (Get_Shortcut_TargetPath(Temp_Shortcut_Path) == Path)
                     {
                         return Temp_Shortcut_Path;
@@ -42,6 +42,7 @@ namespace File_cs
             }
             return null;
         }
+        
         /// <summary>
         /// 创建快捷方式
         /// </summary>

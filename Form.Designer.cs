@@ -359,7 +359,7 @@
             this.PictureBox_磁贴图标预览.Location = new System.Drawing.Point(457, 75);
             this.PictureBox_磁贴图标预览.Name = "PictureBox_磁贴图标预览";
             this.PictureBox_磁贴图标预览.Size = new System.Drawing.Size(32, 32);
-            this.PictureBox_磁贴图标预览.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PictureBox_磁贴图标预览.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PictureBox_磁贴图标预览.TabIndex = 24;
             this.PictureBox_磁贴图标预览.TabStop = false;
             this.toolTip.SetToolTip(this.PictureBox_磁贴图标预览, "磁贴预览框：\r\n按下 [鼠标左键] 开始屏幕取色，松开 [鼠标左键] 停止取色。\r\n单击 [鼠标右键] 重置为系统主题色。\r\n\r\n注意：开启 2004 新版磁贴样" +

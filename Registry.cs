@@ -31,6 +31,7 @@ namespace Registry_cs
                 return true;
             }
         }
+        
         /// <summary>
         /// 添加右键菜单
         /// </summary>
@@ -105,6 +106,7 @@ namespace Registry_cs
                 }
             }
         }
+        
         /// <summary>
         /// 删除右键菜单
         /// </summary>
@@ -161,6 +163,7 @@ namespace Registry_cs
             }
             return ((int)Registry.GetValue(@"HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\DWM", "ColorizationColor", 1052688)).ToString("x8").Substring(2);
         }
+        
         /// <summary>
         /// 获取系统主题模式（浅色/深色）
         /// </summary>
@@ -178,6 +181,7 @@ namespace Registry_cs
             }
             return false;
         }
+        
         /// <summary>
         /// 获取开始菜单(磁贴)、任务栏、操作中心等是否使用主题色
         /// </summary>
@@ -195,6 +199,7 @@ namespace Registry_cs
             }
             return true;
         }
+        
         /// <summary>
         /// 获取系统是否开启透明效果
         /// </summary>
@@ -219,6 +224,7 @@ namespace Registry_cs
         {
             return (string)Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion", "DisplayVersion", null);
         }
+        
         /// <summary>
         /// 获取系统发行ID（例：2004）
         /// </summary>
@@ -227,6 +233,7 @@ namespace Registry_cs
         {
             return (string)Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion", "ReleaseId", null);
         }
+        
         /// <summary>
         /// 获取系统当前版本号（例：19041）
         /// </summary>
@@ -235,6 +242,7 @@ namespace Registry_cs
         {
             return (string)Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion", "CurrentBuild", null);
         }
+        
         /// <summary>
         /// 获取系统当前内部版本号（例：19041）
         /// </summary>
@@ -256,7 +264,7 @@ namespace Registry_cs
             {
                 return false;
             }
-            Debug.Print(Registry.GetValue(@"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FeatureManagement\Overrides\0\2093230218", "EnabledState", null).ToString());
+            //Debug.Print(Registry.GetValue(@"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FeatureManagement\Overrides\0\2093230218", "EnabledState", null).ToString());
             if (Registry.GetValue(@"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FeatureManagement\Overrides\0\2093230218", "EnabledState", null) == null)
             {
                 return false;

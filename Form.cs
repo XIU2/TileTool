@@ -140,22 +140,21 @@ namespace 磁贴美化小工具
             }
             else
             {
-                // 创建一份磁贴(预览框)背景颜色的 Bitmap，用来在遇到有透明图层(png)的图片时，透明的像素点以背景颜色为准，保证磁贴颜色识别准确
+                // 创建一份磁贴(预览框)背景颜色的 Bitmap，在遇到有透明图层(png)的图片时，透明的像素点以背景颜色为准，保证磁贴颜色识别准确
                 Bitmap BackColor = new Bitmap(100, 100);
                 Graphics Temp_BackColor = Graphics.FromImage(BackColor);
                 Temp_BackColor.Clear(PictureBox_磁贴图片预览.BackColor);
                 Temp_BackColor.Dispose();
                 Color Back_PixelColor = BackColor.GetPixel(50, 50);
 
-                Bitmap ImageColor = (Bitmap)PictureBox_磁贴图片预览.Image;
-                ImageColor.SetResolution(100, 100);
+                Bitmap ImageColor = new Bitmap((Bitmap)PictureBox_磁贴图片预览.Image, new Size(100, 100)); // 和图片框一样强制拉伸到 100*100 像素
                 double Red = 0, Green = 0, Blue = 0;
                 //double Alpha = 0;
-                for (int temp_y = 0; temp_y < 16; temp_y++)
+                for (int temp_y = 0; temp_y < 30; temp_y++)
                 {
                     for (int temp_x = 0; temp_x < 92; temp_x++)
                     {
-                        Color Image_PixelColor = ImageColor.GetPixel(5 + temp_x, 79 + temp_y);
+                        Color Image_PixelColor = ImageColor.GetPixel(5 + temp_x, 65 + temp_y);
                         if (Image_PixelColor.A == 0)
                         {
                             //Alpha += Back_PixelColor.A;
@@ -175,11 +174,11 @@ namespace 磁贴美化小工具
                 }
                 //BackColor.Dispose();
                 //ImageColor.Dispose();
-                //Alpha /= 1472;
-                Red /= 1472;
-                Green /= 1472;
-                Blue /= 1472;
-                //Debug.Print(Alpha.ToString() + " " + Red.ToString() + " " + Green.ToString() + " " + Blue.ToString() + " " + (Red * 0.299 + Green * 0.578 + Blue * 0.114).ToString());
+                //Alpha /= 2760;
+                Red /= 2760;
+                Green /= 2760;
+                Blue /= 2760;
+                //Debug.Print(Red.ToString() + " " + Green.ToString() + " " + Blue.ToString() + " " + (Red * 0.299 + Green * 0.578 + Blue * 0.114).ToString());
                 if (Red * 0.299 + Green * 0.578 + Blue * 0.114 >= 168)
                 {
                     Label_磁贴名称预览.ForeColor = Color.Black;
@@ -400,7 +399,7 @@ namespace 磁贴美化小工具
             {
                 Temp_Square150x150Logo = Path.GetFileNameWithoutExtension(TextBox_程序路径.Text) + ".150x150Logo" + Path.GetExtension(TextBox_磁贴图片.Text);
             }
-            Debug.Print(Temp_BackgroundColor + "|" + Temp_ShowNameOnSquare150x150Logo + "|" + Temp_ForegroundText + "|" + Temp_Square150x150Logo + "|" + TextBox_磁贴图标.Text);
+            //Debug.Print(Temp_BackgroundColor + "|" + Temp_ShowNameOnSquare150x150Logo + "|" + Temp_ForegroundText + "|" + Temp_Square150x150Logo + "|" + TextBox_磁贴图标.Text);
             // 开始写入配置
             XElement XML_Application = new XElement("Application",
                     new XAttribute(XNamespace.Xmlns + "xsi", "http://www.w3.org/2001/XMLSchema-instance"));
@@ -679,24 +678,7 @@ namespace 磁贴美化小工具
             }
         }
         
-        private void Label_程序路径_MouseClick(object sender, MouseEventArgs e) // 点击标签后，置焦点为输入框，下同
-        {
-            TextBox_程序路径.Focus();
-        }
-        private void Label_磁贴名称_MouseClick(object sender, MouseEventArgs e)
-        {
-            TextBox_磁贴名称.Focus();
-        }
-        private void Label_磁贴图片_MouseClick(object sender, MouseEventArgs e)
-        {
-            TextBox_磁贴图片.Focus();
-        }
-        private void Label_磁贴图标_MouseClick(object sender, MouseEventArgs e)
-        {
-            TextBox_磁贴图标.Focus();
-        }
-        
-        private void TextBox_程序路径_TextChanged(object sender, EventArgs e) // 输入框内容更改后，置焦点为输入框
+        private void TextBox_程序路径_TextChanged(object sender, EventArgs e) // 内容更改后，读入程序路径
         {
             TextBox_程序路径_Leave_2();
             if (TextBox_程序路径.Text != "")
@@ -759,7 +741,7 @@ namespace 磁贴美化小工具
                 Button_添加磁贴.Enabled = true; // 磁贴名称不等于空时，允许添加磁贴按钮
             }
         }
-        private void TextBox_磁贴图片_TextChanged(object sender, EventArgs e)
+        private void TextBox_磁贴图片_TextChanged(object sender, EventArgs e) // 内容更改后，读入图片
         {
             if (TextBox_磁贴图片.Text != "")
             {
@@ -767,9 +749,15 @@ namespace 磁贴美化小工具
                 {
                     if (PictureBox_磁贴图片预览.Image != null)
                     {
-                        PictureBox_磁贴图片预览.Image.Dispose();
+                        PictureBox_磁贴图片预览.Image.Dispose(); // 释放旧资源
                     }
-                    PictureBox_磁贴图片预览.Image = Image.FromFile(TextBox_磁贴图片.Text);
+                    FileStream Temp_ImageStream = new FileStream(TextBox_磁贴图片.Text, FileMode.Open, FileAccess.Read); // 打开文件流
+                    int Temp_ImageByteLength = (int)Temp_ImageStream.Length;
+                    byte[] Temp_ImageFileBytes = new byte[Temp_ImageByteLength];
+                    Temp_ImageStream.Read(Temp_ImageFileBytes, 0, Temp_ImageByteLength);
+                    Temp_ImageStream.Close(); // 文件流关闭，文件解除锁定
+                    PictureBox_磁贴图片预览.Image = Image.FromStream(new MemoryStream(Temp_ImageFileBytes)); // 从流中读入图片
+                    //PictureBox_磁贴图片预览.Image = Image.FromFile(TextBox_磁贴图片.Text); // 旧载入方式，会锁定文件
                     Recognize_Text_Color(); // 识别图片颜色
                     TextBox_磁贴图标.Text = "";
                     PictureBox_磁贴图标预览.Image = null;
@@ -790,19 +778,32 @@ namespace 磁贴美化小工具
                 TextBox_磁贴图片_Leave_2();
             }
         }
-        private void TextBox_磁贴图标_TextChanged(object sender, EventArgs e)
+        private void TextBox_磁贴图标_TextChanged(object sender, EventArgs e) // 内容更改后，读入图标
         {
             if(TextBox_磁贴图标.Text != "")
             {
                 if (System.IO.File.Exists(TextBox_磁贴图标.Text))
                 {
+                    if (PictureBox_磁贴图标预览.Image != null)
+                    {
+                        PictureBox_磁贴图标预览.Image.Dispose(); // 释放旧资源
+                    }
                     if (Path.GetExtension(TextBox_磁贴图标.Text).ToLower() == ".exe")
                     {
-                        PictureBox_磁贴图标预览.Image = Bitmap.FromHicon(System.Drawing.Icon.ExtractAssociatedIcon(TextBox_磁贴图标.Text).Handle);
+                        PictureBox_磁贴图标预览.Image = System.Drawing.Icon.ExtractAssociatedIcon(TextBox_磁贴图标.Text).ToBitmap();
+                        //PictureBox_磁贴图标预览.Image = Bitmap.FromHicon(System.Drawing.Icon.ExtractAssociatedIcon(TextBox_磁贴图标.Text).Handle); // 旧载入方式，有锯齿
                     }
                     else if(Path.GetExtension(TextBox_磁贴图标.Text).ToLower() == ".ico")
                     {
-                        PictureBox_磁贴图标预览.Image = Bitmap.FromHicon(new Icon(TextBox_磁贴图标.Text, new Size(32, 32)).Handle);
+                        FileStream Temp_IconStream = new FileStream(TextBox_磁贴图标.Text, FileMode.Open, FileAccess.Read); // 打开文件流
+                        int Temp_IconByteLength = (int)Temp_IconStream.Length;
+                        byte[] Temp_IconFileBytes = new byte[Temp_IconByteLength];
+                        Temp_IconStream.Read(Temp_IconFileBytes, 0, Temp_IconByteLength);
+                        Temp_IconStream.Close(); // 文件流关闭，文件解除锁定
+                        PictureBox_磁贴图标预览.Image = Image.FromStream(new MemoryStream(Temp_IconFileBytes)); // 从流中读入图标
+
+                        //PictureBox_磁贴图标预览.ImageLocation = TextBox_磁贴图标.Text; // 旧载入方式，无锯齿，但会锁定文件
+                        //PictureBox_磁贴图标预览.Image = Bitmap.FromHicon(new Icon(TextBox_磁贴图标.Text, 32, 32).Handle); // 旧载入方式，有锯齿
                     }
                     TextBox_磁贴图片.Text = "";
                     PictureBox_磁贴图片预览.Image = null;
@@ -831,7 +832,7 @@ namespace 磁贴美化小工具
             {
                 TextBox_磁贴图片.Text = null;
                 PictureBox_磁贴图片预览.Image = null;
-                if (TextBox_磁贴图标.Text == "") // 如果图标也是空的话，那就指定为程序文件
+                if (TextBox_磁贴图标.Text == "") // 如果图标路径也是空的话，那就指定为程序文件
                 {
                     TextBox_磁贴图标.Text = TextBox_程序路径.Text;
                 }
@@ -841,8 +842,15 @@ namespace 磁贴美化小工具
         {
             if (e.KeyChar == 8)
             {
-                TextBox_磁贴图标.Text = null;
-                PictureBox_磁贴图标预览.Image = null;
+                if (TextBox_磁贴图标.Text != TextBox_程序路径.Text) // 如果图标路径等于程序路径，那就没必要继续无意义动作了
+                {
+                    TextBox_磁贴图标.Text = null;
+                    PictureBox_磁贴图标预览.Image = null;
+                    if (TextBox_磁贴图片.Text == "") // 如果图片路径也是空的话，那就指定图标为程序路径
+                    {
+                        TextBox_磁贴图标.Text = TextBox_程序路径.Text;
+                    }
+                }
             }
         }
         private void TextBox_程序路径_KeyPress(object sender, KeyPressEventArgs e)
@@ -852,6 +860,7 @@ namespace 磁贴美化小工具
                 Init_Config();
             }
         }
+        
         private void TextBox_程序路径_Enter(object sender, EventArgs e) // 输入框获得焦点后，置顶并修改背景颜色，下同
         {
             TextBox_程序路径.BringToFront();
@@ -940,6 +949,10 @@ namespace 磁贴美化小工具
             if (TextBox_磁贴图标.Text == "")
             {
                 TextBox_磁贴图标.SendToBack();
+                if (PictureBox_磁贴图标预览.Image != null)
+                {
+                    PictureBox_磁贴图标预览.Image.Dispose();
+                }
             }
             else
             {
@@ -948,7 +961,24 @@ namespace 磁贴美化小工具
             TextBox_磁贴图标.BackColor = Color.WhiteSmoke;
             Label_磁贴图标.BackColor = Color.WhiteSmoke;
         }
-
+        
+        private void Label_程序路径_MouseClick(object sender, MouseEventArgs e) // 点击标签后，置焦点为输入框，下同
+        {
+            TextBox_程序路径.Focus();
+        }
+        private void Label_磁贴名称_MouseClick(object sender, MouseEventArgs e)
+        {
+            TextBox_磁贴名称.Focus();
+        }
+        private void Label_磁贴图片_MouseClick(object sender, MouseEventArgs e)
+        {
+            TextBox_磁贴图片.Focus();
+        }
+        private void Label_磁贴图标_MouseClick(object sender, MouseEventArgs e)
+        {
+            TextBox_磁贴图标.Focus();
+        }
+        
         private void PictureBox_磁贴图片预览_MouseDown(object sender, MouseEventArgs e) // 图片预览框 鼠标按下开始取色
         {
             if (e.Button == MouseButtons.Left)
