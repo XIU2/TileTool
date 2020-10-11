@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -20,6 +21,9 @@ namespace Xiu2.TileTool
         public MainWindow()
         {
             InitializeComponent();
+
+            // 初始化动态的界面项。
+            Title = $"{AppInfo.Main.AppName} v{AppInfo.Main.Version}";
         }
     }
 }

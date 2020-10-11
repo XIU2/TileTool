@@ -7,6 +7,14 @@
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
     <RootNamespace>Xiu2.TileTool</RootNamespace>
+    <Version>4.2.0-alpha01</Version>
+    <StartupObject>Xiu2.TileTool.Program</StartupObject>
+    <AssemblyName>磁贴美化小工具</AssemblyName>
+    <ApplicationManifest>App.manifest</ApplicationManifest>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Walterlv.Themes.FluentDesign.Source" Version="5.9.0" PrivateAssets="all" />
+  </ItemGroup>
 
 </Project>
