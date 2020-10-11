@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "磁贴美化小工具", "磁贴美化小工具.csproj", "{A8851F5E-CBB5-4466-BD72-D95C9BEA4DEA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "磁贴美化小工具", "src\磁贴美化小工具.WindowsForms\磁贴美化小工具.csproj", "{A8851F5E-CBB5-4466-BD72-D95C9BEA4DEA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
