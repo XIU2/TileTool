@@ -10,6 +10,7 @@
     <Company>XIU2</Company>
     <Copyright>Copyright © 2020 XIU2. All Rights Reserved.</Copyright>
     <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net46' ">
