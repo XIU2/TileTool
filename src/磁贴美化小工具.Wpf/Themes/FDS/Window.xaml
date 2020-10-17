@@ -1,0 +1,23 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:themes="clr-namespace:Walterlv.Windows.Themes">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/Themes/Core.xaml" />
+        <ResourceDictionary Source="/Window.Universal.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style x:Key="Style.Window" TargetType="Window" BasedOn="{StaticResource Style.Window.Universal}">
+        <Setter Property="themes:UniversalWindowStyle.TitleBar">
+            <Setter.Value>
+                <themes:UniversalTitleBar ForegroundColor="{StaticResource Color.Theme.Foreground}"
+                                          InactiveForegroundColor="{StaticResource Color.Theme.Foreground.Disable}"
+                                          ButtonForegroundColor="{StaticResource Color.Foreground}"
+                                          ButtonInactiveForegroundColor="{StaticResource Color.Foreground.Disable}"
+                                          ButtonHoverForeground="{StaticResource Color.Foreground}"
+                                          ButtonHoverBackground="{StaticResource Color.Theme.Light1}"
+                                          ButtonPressedForeground="{StaticResource Color.Background}"
+                                          ButtonPressedBackground="{StaticResource Color.Theme.Dark1}" />
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

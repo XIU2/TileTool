@@ -4,8 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Xiu2.TileTool"
-        mc:Ignorable="d"
-        Height="450" Width="800">
+        mc:Ignorable="d" Height="450" Width="800"
+        Style="{StaticResource Style.Window}"
+        Topmost="True" Background="{StaticResource Brush.Theme.Background}">
     <Grid>
 
     </Grid>
