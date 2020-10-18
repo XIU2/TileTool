@@ -23,9 +23,6 @@ namespace Xiu2.TileTool.Views
         public MainWindow()
         {
             InitializeComponent();
-
-            // 初始化动态的界面项。
-            Title = $"{AppInfo.Main.AppName} v{AppInfo.Main.Version}";
         }
     }
 }

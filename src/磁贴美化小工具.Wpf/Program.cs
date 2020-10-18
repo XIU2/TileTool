@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Threading;
+using Xiu2.TileTool.Core;
 
 namespace Xiu2.TileTool
 {
@@ -56,6 +58,7 @@ namespace Xiu2.TileTool
         /// </summary>
         private static void KillSameNameProcess()
         {
+            var name = AppInfo.Main.AppName;
             // 获取当前进程信息。
             Process currentProcess = Process.GetCurrentProcess();
             // 获取同名进程信息。
@@ -63,7 +66,7 @@ namespace Xiu2.TileTool
             foreach (Process process in processes)
             {
                 // 判断该进程主窗口标题是否含有 XXX 字符串。
-                if (process.MainWindowTitle.Contains("磁贴美化小工具 v"))
+                if (process.MainWindowTitle.Contains(name))
                 {
                     // 如果不是当前进程，就结束它。
                     if (process.Id != currentProcess.Id)

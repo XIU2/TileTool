@@ -17,8 +17,10 @@ namespace Xiu2.TileTool.Core
 
         public AppInfo(Assembly assembly)
         {
-            AppName = assembly.GetCustomAttribute<AssemblyTitleAttribute>()!.Title;
+            AppName = assembly.GetCustomAttribute<AssemblyProductAttribute>()?.Product
+                ?? assembly.GetCustomAttribute<AssemblyTitleAttribute>()!.Title;
             Version = assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>()!.InformationalVersion;
+            Author = assembly.GetCustomAttribute<AssemblyCompanyAttribute>()!.Company;
         }
 
         /// <summary>
@@ -30,5 +32,10 @@ namespace Xiu2.TileTool.Core
         /// 获取版本号（可能带预览标签）。
         /// </summary>
         public string Version { get; }
+
+        /// <summary>
+        /// 获取作者名。
+        /// </summary>
+        public string Author { get; }
     }
 }

@@ -6,12 +6,14 @@
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <AssemblyName>Xiu2.TileTool</AssemblyName>
     <RootNamespace>Xiu2.TileTool</RootNamespace>
+    <Product>磁贴美化小工具</Product>
+    <Company>Xiu2</Company>
+    <Authors>Xiu2</Authors>
     <Version>4.2.0-alpha01</Version>
     <StartupObject>Xiu2.TileTool.Program</StartupObject>
-    <AssemblyName>磁贴美化小工具</AssemblyName>
     <ApplicationManifest>App.manifest</ApplicationManifest>
-    <XamlDebuggingInformation>True</XamlDebuggingInformation>
   </PropertyGroup>
 
   <ItemGroup>
