@@ -4,10 +4,58 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Xiu2.TileTool.Views"
+        xmlns:uf="clr-namespace:Xiu2.TileTool.UIFramework"
         mc:Ignorable="d" Height="450" Width="800"
         Style="{StaticResource Style.Window}"
         Topmost="True" Background="{StaticResource Brush.Theme.Background}">
+    <Window.DataContext>
+        <local:MainViewModel />
+    </Window.DataContext>
+    <Window.Resources>
+        <Style TargetType="ListBoxItem">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                        <Grid Background="AntiqueWhite">
+                            <ContentPresenter />
+                            <Border x:Name="SelectedBorder"
+                                    BorderThickness="4"
+                                    Background="{StaticResource Brush.Theme}"
+                                    HorizontalAlignment="Left"
+                                    SnapsToDevicePixels="True" />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="False">
+                                <Setter TargetName="SelectedBorder" Property="Visibility" Value="Collapsed" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                
+            </Style.Triggers>
+        </Style>
+        <DataTemplate x:Key="Template.NavigationItem" DataType="uf:NavigationItem">
+            <Grid>
+                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="20"
+                           Text="{Binding Data, Mode=OneTime}" />
+            </Grid>
+        </DataTemplate>
+    </Window.Resources>
     <Grid>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="48" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <ItemsControl Grid.Row="1" Grid.Column="0"
+                      ItemsSource="{Binding NavigationItems}"
+                      ItemTemplate="{StaticResource Template.NavigationItem}">
+            
+        </ItemsControl>
     </Grid>
 </Window>
