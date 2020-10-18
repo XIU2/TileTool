@@ -17,4 +17,8 @@
     <PackageReference Include="Walterlv.Themes.FluentDesign.Source" Version="5.9.0" PrivateAssets="all" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="SourceProject\**" />
+  </ItemGroup>
+
 </Project>

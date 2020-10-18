@@ -14,7 +14,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Xiu2.TileTool
+using Xiu2.TileTool.Core;
+
+namespace Xiu2.TileTool.Views
 {
     public partial class MainWindow : Window
     {

@@ -6,6 +6,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
+using Xiu2.TileTool.Core;
+
 namespace Xiu2.TileTool
 {
     public partial class App : Application

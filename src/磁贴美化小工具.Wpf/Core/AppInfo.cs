@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
 
-namespace Xiu2.TileTool
+namespace Xiu2.TileTool.Core
 {
     /// <summary>
     /// 包含应用程序的一般信息。
