@@ -8,6 +8,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Themes/Core.xaml" />
                 <ResourceDictionary Source="/Themes/FDS/Window.xaml" />
+                <ResourceDictionary Source="/Themes/FDS/ListBox.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
