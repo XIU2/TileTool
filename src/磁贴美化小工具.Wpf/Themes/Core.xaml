@@ -30,4 +30,14 @@
     <SolidColorBrush x:Key="Brush.Background.Float" Color="{StaticResource Color.Background.Float}" />
     <SolidColorBrush x:Key="Brush.Background.Control" Color="{StaticResource Color.Background.Control}" />
 
+    <Style x:Key="Style.FocusVisual.Default">
+        <Setter Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Rectangle StrokeThickness="2" Stroke="{StaticResource Brush.Foreground}" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
 </ResourceDictionary>

@@ -4,9 +4,61 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Xiu2.TileTool.Views"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             xmlns:ef="clr-namespace:Walterlv.Windows.Effects"
+             mc:Ignorable="d">
     <Grid>
-            
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <UniformGrid Grid.Column="0" Columns="2" Margin="2"
+                     VerticalAlignment="Top" UseLayoutRounding="True">
+            <FrameworkElement.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Width" Value="100" />
+                    <Setter Property="Height" Value="100" />
+                    <Setter Property="Margin" Value="2" />
+                    <Setter Property="SnapsToDevicePixels" Value="True" />
+                    <Setter Property="ef:TiltEffect2D.IsEnabled" Value="True" />
+                    <Setter Property="FocusVisualStyle" Value="{StaticResource Style.FocusVisual.Default}" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Grid Background="Transparent">
+                                    <Border x:Name="BackgroundBorder" Background="#2D2D2D" />
+                                    <ContentPresenter />
+                                    <Border x:Name="HoverBorder" BorderThickness="2">
+                                        <Border.BorderBrush>
+                                            <ef:RevealBorderBrush Color="{StaticResource Color.Foreground}" Opacity="0.25" Radius="50" />
+                                        </Border.BorderBrush>
+                                        <Border.Background>
+                                            <ef:RevealBorderBrush Color="{StaticResource Color.Foreground}" Opacity="0.125" Radius="150" />
+                                        </Border.Background>
+                                    </Border>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="HoverBorder" Property="BorderBrush">
+                                            <Setter.Value>
+                                                <SolidColorBrush Color="{StaticResource Color.Foreground}" Opacity="0.5" />
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                    <Trigger Property="IsMouseOver" Value="False">
+                                        <Setter TargetName="HoverBorder" Property="Background" Value="Transparent" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </FrameworkElement.Resources>
+            <Button Background="#0C6BB5" />
+            <Button Background="#2D2D30" />
+            <Button Background="#2D2D30" />
+            <Button Background="#2D2D30" />
+            <Button Background="#2D2D30" />
+            <Button Background="#2D2D30" />
+        </UniformGrid>
     </Grid>
 </UserControl>

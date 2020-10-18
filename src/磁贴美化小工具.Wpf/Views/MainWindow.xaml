@@ -16,6 +16,7 @@
         <Style x:Key="Style.ListBoxItem.NavigationItem" TargetType="ListBoxItem">
             <Setter Property="Width" Value="48" />
             <Setter Property="Height" Value="48" />
+            <Setter Property="FocusVisualStyle" Value="{StaticResource Style.FocusVisual.Default}" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="ListBoxItem">
@@ -28,7 +29,7 @@
                             <Border x:Name="HoverBorder" SnapsToDevicePixels="True"
                                     BorderThickness="0 0 0 1">
                                 <Border.BorderBrush>
-                                    <ef:RevealBorderBrush Color="{StaticResource Color.Foreground}" />
+                                    <ef:RevealBorderBrush Color="{StaticResource Color.Foreground}" Radius="50" />
                                 </Border.BorderBrush>
                                 <Border.Background>
                                     <ef:RevealBorderBrush Color="{StaticResource Color.Foreground}" Opacity="0.25" Radius="200" />
@@ -69,15 +70,17 @@
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <ListBox Grid.Row="1" Grid.Column="0" SnapsToDevicePixels="True"
+        <ListBox x:Name="NavigationListBox" Grid.Row="1" Grid.Column="0"
+                 SnapsToDevicePixels="True"
                  Background="Transparent" Foreground="White" BorderThickness="0 1 1 0"
                  ItemsSource="{Binding NavigationItems}"
                  ItemTemplate="{StaticResource Template.NavigationItem}"
                  ItemContainerStyle="{StaticResource Style.ListBoxItem.NavigationItem}">
             <ListBox.BorderBrush>
-                <ef:RevealBorderBrush Color="{StaticResource Color.Foreground}" />
+                <ef:RevealBorderBrush Color="{StaticResource Color.Foreground}" Radius="50" />
             </ListBox.BorderBrush>
-
         </ListBox>
+        <ContentPresenter Grid.Row="1" Grid.Column="1"
+                          Content="{Binding SelectedItem.View, ElementName=NavigationListBox, Mode=OneWay}" />
     </Grid>
 </Window>
