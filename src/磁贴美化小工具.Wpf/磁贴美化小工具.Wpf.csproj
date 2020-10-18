@@ -11,6 +11,7 @@
     <StartupObject>Xiu2.TileTool.Program</StartupObject>
     <AssemblyName>磁贴美化小工具</AssemblyName>
     <ApplicationManifest>App.manifest</ApplicationManifest>
+    <XamlDebuggingInformation>True</XamlDebuggingInformation>
   </PropertyGroup>
 
   <ItemGroup>

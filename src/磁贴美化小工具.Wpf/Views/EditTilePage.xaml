@@ -11,13 +11,14 @@
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <UniformGrid Grid.Column="0" Columns="2" Margin="2"
+        <UniformGrid Grid.Column="0" Columns="2" Margin="2 2 2 -320"
                      VerticalAlignment="Top" UseLayoutRounding="True">
             <FrameworkElement.Resources>
                 <Style TargetType="Button">
                     <Setter Property="Width" Value="100" />
                     <Setter Property="Height" Value="100" />
                     <Setter Property="Margin" Value="2" />
+                    <Setter Property="Background" Value="#2D2D2D" />
                     <Setter Property="SnapsToDevicePixels" Value="True" />
                     <Setter Property="ef:TiltEffect2D.IsEnabled" Value="True" />
                     <Setter Property="FocusVisualStyle" Value="{StaticResource Style.FocusVisual.Default}" />
@@ -25,9 +26,10 @@
                         <Setter.Value>
                             <ControlTemplate TargetType="Button">
                                 <Grid Background="Transparent">
-                                    <Border x:Name="BackgroundBorder" Background="#2D2D2D" />
+                                    <Border x:Name="BackgroundBorder" IsHitTestVisible="False"
+                                            Background="{TemplateBinding Background}" />
                                     <ContentPresenter />
-                                    <Border x:Name="HoverBorder" BorderThickness="2">
+                                    <Border x:Name="HoverBorder" BorderThickness="2" IsHitTestVisible="False">
                                         <Border.BorderBrush>
                                             <ef:RevealBorderBrush Color="{StaticResource Color.Foreground}" Opacity="0.25" Radius="50" />
                                         </Border.BorderBrush>
@@ -53,12 +55,35 @@
                     </Setter>
                 </Style>
             </FrameworkElement.Resources>
-            <Button Background="#0C6BB5" />
-            <Button Background="#2D2D30" />
-            <Button Background="#2D2D30" />
-            <Button Background="#2D2D30" />
-            <Button Background="#2D2D30" />
-            <Button Background="#2D2D30" />
+            <Button Background="#0C6BB5">
+                <Grid>
+                    <Image Width="32" Height="32"
+                           RenderOptions.BitmapScalingMode="HighQuality"
+                           Source="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Windows_logo_-_2012_derivative.svg/1200px-Windows_logo_-_2012_derivative.svg.png" />
+                    <TextBlock Text="磁贴美化小工具"
+                               Foreground="{StaticResource Brush.Foreground}"
+                               FontSize="12" Margin="8 4"
+                               HorizontalAlignment="Left" VerticalAlignment="Bottom" />
+                </Grid>
+            </Button>
+            <Button />
+            <Button>
+                <Grid>
+                    <TextBlock FontFamily="Segoe MDL2 Assets" Foreground="#3F3F42"
+                               FontSize="32" Text=""
+                               HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    <TextBlock Text="点击或拖入" FontSize="11" Foreground="#3F3F42"
+                               Margin="0 8" HorizontalAlignment="Center" VerticalAlignment="Bottom" />
+                </Grid>
+            </Button>
+            <Button />
+            <Button />
+            <Button />
         </UniformGrid>
+        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <TextBlock Text="程序路径" />
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </UserControl>

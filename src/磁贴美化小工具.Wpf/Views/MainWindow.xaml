@@ -7,8 +7,10 @@
         xmlns:uf="clr-namespace:Xiu2.TileTool.UIFramework"
         xmlns:ef="clr-namespace:Walterlv.Windows.Effects"
         mc:Ignorable="d" Height="450" Width="800"
-        Style="{StaticResource Style.Window}"
-        Topmost="True" Background="{StaticResource Brush.Theme.Background}">
+        Style="{StaticResource Style.Window}" Topmost="True"
+        Background="{StaticResource Brush.Theme.Background}"
+        Foreground="{StaticResource Brush.Foreground}"
+        FontSize="14" MinHeight="320">
     <Window.DataContext>
         <local:MainViewModel />
     </Window.DataContext>
