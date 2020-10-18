@@ -64,7 +64,7 @@
         </Style>
         <DataTemplate x:Key="Template.NavigationItem" DataType="uf:NavigationItem">
             <Grid>
-                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="20"
+                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16"
                            Text="{Binding Data, Mode=OneTime}"
                            HorizontalAlignment="Center" VerticalAlignment="Center" />
             </Grid>
@@ -84,7 +84,8 @@
                  Background="Transparent" Foreground="White" BorderThickness="0 1 1 0"
                  ItemsSource="{Binding NavigationItems}"
                  ItemTemplate="{StaticResource Template.NavigationItem}"
-                 ItemContainerStyle="{StaticResource Style.ListBoxItem.NavigationItem}">
+                 ItemContainerStyle="{StaticResource Style.ListBoxItem.NavigationItem}"
+                 SelectedIndex="0">
             <ListBox.BorderBrush>
                 <ef:RevealBorderBrush Color="{StaticResource Color.Foreground}" Radius="50" />
             </ListBox.BorderBrush>
