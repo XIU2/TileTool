@@ -40,7 +40,7 @@
 
 ## 下载地址
 
-* 蓝奏云 ：[https://www.lanzoux.com/b0sp46eh](https://www.lanzoux.com/b0sp46eh)
+* 蓝奏云 ：[https://xiu.lanzoux.com/b0sp46eh](https://xiu.lanzoux.com/b0sp46eh)
 * Github：[https://github.com/XIU2/TileTool/releases](https://github.com/XIU2/TileTool/releases)
 
 ****
