@@ -7,9 +7,11 @@
 
 **Windows10 磁贴美化小工具**
 
-最近体验了下 Win10 2004 的新版磁贴（开启方法见网盘），统一背景颜色为主题色、磁贴半透明了，感觉还不错。于是我闲的没事用 C# 重写并开源了（虽然也没人看）~  
-详细介绍、使用说明请看：https://zhuanlan.zhihu.com/p/79630122  
-磁贴辅助小工具开源：https://github.com/XIU2/TileAssistTool  
+最近体验了下 Win10 2004 的新版磁贴（开启方法见网盘），统一背景颜色为主题色、磁贴半透明，感觉还不错。  
+于是我闲的没事用 C# 重写并开源了磁贴美化小工具（虽然也没人看）~ **如果觉得好用请点个⭐！**  
+
+- 详细介绍、使用说明：https://zhuanlan.zhihu.com/p/79630122  
+- 磁贴辅助小工具开源：https://github.com/XIU2/TileAssistTool  
 
 ****
 
@@ -34,7 +36,7 @@
 ![](https://raw.githubusercontent.com/XIU2/TileTool/master/img/07.png)  
 ![](https://raw.githubusercontent.com/XIU2/TileTool/master/img/08.png)  
 
-> 磁贴图标包(三百多个)我放在蓝奏云网盘中了，需要自取。  
+> 磁贴图标包(400+)我放在蓝奏云网盘中了，需要自取。  
 
 ****
 
