@@ -1,0 +1,96 @@
+﻿<Window x:Class="Xiu2.TileTool.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Xiu2.TileTool.Views"
+        xmlns:core="clr-namespace:Xiu2.TileTool.Core"
+        xmlns:ef="clr-namespace:Walterlv.Windows.Effects"
+        xmlns:uf="clr-namespace:Xiu2.TileTool.UIFramework"
+        mc:Ignorable="d" Height="450" Width="800"
+        Style="{StaticResource Style.Window}" Topmost="True"
+        Background="{StaticResource Brush.Theme.Background}"
+        Foreground="{StaticResource Brush.Foreground}"
+        FontSize="14" MinHeight="320">
+    <Window.DataContext>
+        <local:MainViewModel />
+    </Window.DataContext>
+    <Window.Title>
+        <MultiBinding StringFormat="{}{0} v{1}">
+            <Binding Source="{x:Static core:AppInfo.Main}" Path="AppName" />
+            <Binding Source="{x:Static core:AppInfo.Main}" Path="Version" />
+        </MultiBinding>
+    </Window.Title>
+    <Window.Resources>
+        <Style x:Key="Style.ListBoxItem.NavigationItem" TargetType="ListBoxItem">
+            <Setter Property="Width" Value="48" />
+            <Setter Property="Height" Value="48" />
+            <Setter Property="FocusVisualStyle" Value="{StaticResource Style.FocusVisual.Default}" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                        <Grid ef:TiltEffect2D.IsEnabled="True">
+                            <ContentPresenter />
+                            <Border x:Name="SelectedBorder"
+                                    Background="{StaticResource Brush.Theme}"
+                                    HorizontalAlignment="Left" Width="4" Margin="2 2 0 3"
+                                    SnapsToDevicePixels="True" RenderTransformOrigin="0.5 0.5" />
+                            <Border x:Name="HoverBorder" SnapsToDevicePixels="True"
+                                    BorderThickness="0 0 0 1">
+                                <Border.BorderBrush>
+                                    <ef:RevealBorderBrush Color="{StaticResource Color.Foreground}" Radius="50" />
+                                </Border.BorderBrush>
+                                <Border.Background>
+                                    <ef:RevealBorderBrush Color="{StaticResource Color.Foreground}" Opacity="0.25" Radius="200" />
+                                </Border.Background>
+                            </Border>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="False">
+                                <Setter TargetName="HoverBorder" Property="Background" Value="Transparent" />
+                                <Setter TargetName="SelectedBorder" Property="RenderTransform">
+                                    <Setter.Value>
+                                        <ScaleTransform ScaleY="0.75" />
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="False">
+                                <Setter TargetName="SelectedBorder" Property="Visibility" Value="Collapsed" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <DataTemplate x:Key="Template.NavigationItem" DataType="uf:NavigationItem">
+            <Grid>
+                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="16"
+                           Text="{Binding Data, Mode=OneTime}"
+                           HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </Grid>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <ListBox x:Name="NavigationListBox" Grid.Row="1" Grid.Column="0"
+                 SnapsToDevicePixels="True"
+                 Background="Transparent" Foreground="White" BorderThickness="0 1 1 0"
+                 ItemsSource="{Binding NavigationItems}"
+                 ItemTemplate="{StaticResource Template.NavigationItem}"
+                 ItemContainerStyle="{StaticResource Style.ListBoxItem.NavigationItem}"
+                 SelectedIndex="0">
+            <ListBox.BorderBrush>
+                <ef:RevealBorderBrush Color="{StaticResource Color.Foreground}" Radius="50" />
+            </ListBox.BorderBrush>
+        </ListBox>
+        <ContentPresenter Grid.Row="1" Grid.Column="1"
+                          Content="{Binding SelectedItem.View, ElementName=NavigationListBox, Mode=OneWay}" />
+    </Grid>
+</Window>

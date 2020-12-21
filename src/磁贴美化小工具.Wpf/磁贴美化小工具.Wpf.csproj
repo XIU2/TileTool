@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFrameworks>netcoreapp3.1;net46</TargetFrameworks>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <AssemblyName>Xiu2.TileTool</AssemblyName>
+    <RootNamespace>Xiu2.TileTool</RootNamespace>
+    <Product>磁贴美化小工具</Product>
+    <Company>Xiu2</Company>
+    <Authors>Xiu2</Authors>
+    <Version>4.2.0-alpha01</Version>
+    <StartupObject>Xiu2.TileTool.Program</StartupObject>
+    <ApplicationManifest>App.manifest</ApplicationManifest>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Walterlv.Themes.FluentDesign.Source" Version="5.9.0" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="SourceProject\**" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,43 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Color x:Key="Color.Theme">#0B6AB4</Color>
+    <Color x:Key="Color.Theme.Light1">#2286CC</Color>
+    <Color x:Key="Color.Theme.Dark1">#014696</Color>
+    <Color x:Key="Color.Foreground">White</Color>
+    <Color x:Key="Color.Foreground.Disable">#999999</Color>
+    <Color x:Key="Color.Background">#2B2B2B</Color>
+    <Color x:Key="Color.Theme.Foreground">White</Color>
+    <Color x:Key="Color.Theme.Foreground.Disable">#999999</Color>
+    <Color x:Key="Color.Theme.Background">#2B2B2B</Color>
+    <Color x:Key="Color.Background.Header">#353536</Color>
+    <Color x:Key="Color.Background.Items">#353536</Color>
+    <Color x:Key="Color.Background.Footer">#353536</Color>
+    <Color x:Key="Color.Background.Float">#353536</Color>
+    <Color x:Key="Color.Background.Control">#353536</Color>
+    <SolidColorBrush x:Key="Brush.Theme" Color="{StaticResource Color.Theme}" />
+    <SolidColorBrush x:Key="Brush.Theme.Light1" Color="{StaticResource Color.Theme.Light1}" />
+    <SolidColorBrush x:Key="Brush.Theme.Dark1" Color="{StaticResource Color.Theme.Dark1}" />
+    <SolidColorBrush x:Key="Brush.Foreground" Color="{StaticResource Color.Foreground}" />
+    <SolidColorBrush x:Key="Brush.Foreground.Disable" Color="{StaticResource Color.Foreground.Disable}" />
+    <SolidColorBrush x:Key="Brush.Background" Color="{StaticResource Color.Background}" />
+    <SolidColorBrush x:Key="Brush.Theme.Foreground" Color="{StaticResource Color.Theme.Foreground}" />
+    <SolidColorBrush x:Key="Brush.Theme.Foreground.Disable" Color="{StaticResource Color.Theme.Foreground.Disable}" />
+    <SolidColorBrush x:Key="Brush.Theme.Background" Color="{StaticResource Color.Theme.Background}" />
+    <SolidColorBrush x:Key="Brush.Background.Header" Color="{StaticResource Color.Background.Header}" />
+    <SolidColorBrush x:Key="Brush.Background.Items" Color="{StaticResource Color.Background.Items}" />
+    <SolidColorBrush x:Key="Brush.Background.Footer" Color="{StaticResource Color.Background.Footer}" />
+    <SolidColorBrush x:Key="Brush.Background.Float" Color="{StaticResource Color.Background.Float}" />
+    <SolidColorBrush x:Key="Brush.Background.Control" Color="{StaticResource Color.Background.Control}" />
+
+    <Style x:Key="Style.FocusVisual.Default">
+        <Setter Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Rectangle StrokeThickness="2" Stroke="{StaticResource Brush.Foreground}" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>
