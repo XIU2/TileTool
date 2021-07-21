@@ -6,11 +6,20 @@
     <PlatformTarget>x64</PlatformTarget>
     <LangVersion>latest</LangVersion>
     <UseWindowsForms>true</UseWindowsForms>
-    <Version>4.0.9</Version>
+    <Version>4.1.0</Version>
     <Company>XIU2</Company>
     <Copyright>Copyright © 2020 XIU2. All Rights Reserved.</Copyright>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <ApplicationIcon>Icon.ico</ApplicationIcon>
+    <StartupObject>磁贴美化小工具.Program</StartupObject>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net46|AnyCPU'">
+    <OutputPath>D:\VS\Program\磁贴美化小工具\Release\</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net46|AnyCPU'">
+    <OutputPath>D:\VS\Program\磁贴美化小工具\Debug\</OutputPath>
   </PropertyGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net46' ">

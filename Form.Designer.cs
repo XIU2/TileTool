@@ -50,6 +50,7 @@
             this.PictureBox_磁贴图标预览 = new System.Windows.Forms.PictureBox();
             this.Label_磁贴名称预览 = new System.Windows.Forms.Label();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.Button_旧版磁贴模式 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox_磁贴图片预览)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox_磁贴图标预览)).BeginInit();
             this.SuspendLayout();
@@ -97,8 +98,8 @@
             this.PictureBox_磁贴图片预览.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PictureBox_磁贴图片预览.TabIndex = 2;
             this.PictureBox_磁贴图片预览.TabStop = false;
-            this.toolTip.SetToolTip(this.PictureBox_磁贴图片预览, "磁贴预览框：\r\n按下 [鼠标左键] 开始屏幕取色，松开 [鼠标左键] 停止取色。\r\n单击 [鼠标右键] 重置为系统主题色。\r\n\r\n注意：开启 2004 新版磁贴样" +
-        "式后无法使用 [屏幕取色] 功能。\r\n注意：图标预览时可能会出现锯齿等显示问题，但实际磁贴显示正常！");
+            this.toolTip.SetToolTip(this.PictureBox_磁贴图片预览, "磁贴预览框：\r\n按下 [鼠标左键] 开始屏幕取色，松开 [鼠标左键] 停止取色。\r\n单击 [鼠标右键] 重置为系统主题色。\r\n\r\n注意：系统 2004 版本及以上" +
+        "/开启新版磁贴样式后，请开启下方的 [旧版磁贴模式] 才能使用 [屏幕取色] 功能。\r\n注意：图标预览时可能会出现锯齿等显示问题，但实际磁贴显示正常！");
             this.PictureBox_磁贴图片预览.BackColorChanged += new System.EventHandler(this.PictureBox_磁贴图片预览_BackColorChanged);
             this.PictureBox_磁贴图片预览.MouseClick += new System.Windows.Forms.MouseEventHandler(this.PictureBox_磁贴图片预览_MouseClick);
             this.PictureBox_磁贴图片预览.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PictureBox_磁贴图片预览_MouseDown);
@@ -291,7 +292,7 @@
             this.Button_添加右键菜单.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.Button_添加右键菜单.Location = new System.Drawing.Point(0, 205);
             this.Button_添加右键菜单.Name = "Button_添加右键菜单";
-            this.Button_添加右键菜单.Size = new System.Drawing.Size(140, 22);
+            this.Button_添加右键菜单.Size = new System.Drawing.Size(115, 22);
             this.Button_添加右键菜单.TabIndex = 20;
             this.Button_添加右键菜单.TabStop = false;
             this.Button_添加右键菜单.Text = "添加右键菜单 [√]";
@@ -307,9 +308,9 @@
             this.Button_查看磁贴目录.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Button_查看磁贴目录.Font = new System.Drawing.Font("微软雅黑", 8F);
             this.Button_查看磁贴目录.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.Button_查看磁贴目录.Location = new System.Drawing.Point(282, 205);
+            this.Button_查看磁贴目录.Location = new System.Drawing.Point(348, 205);
             this.Button_查看磁贴目录.Name = "Button_查看磁贴目录";
-            this.Button_查看磁贴目录.Size = new System.Drawing.Size(140, 22);
+            this.Button_查看磁贴目录.Size = new System.Drawing.Size(95, 22);
             this.Button_查看磁贴目录.TabIndex = 21;
             this.Button_查看磁贴目录.TabStop = false;
             this.Button_查看磁贴目录.Text = "查看磁贴目录";
@@ -325,9 +326,9 @@
             this.Button_自动检查更新.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Button_自动检查更新.Font = new System.Drawing.Font("微软雅黑", 8F);
             this.Button_自动检查更新.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.Button_自动检查更新.Location = new System.Drawing.Point(141, 205);
+            this.Button_自动检查更新.Location = new System.Drawing.Point(116, 205);
             this.Button_自动检查更新.Name = "Button_自动检查更新";
-            this.Button_自动检查更新.Size = new System.Drawing.Size(140, 22);
+            this.Button_自动检查更新.Size = new System.Drawing.Size(115, 22);
             this.Button_自动检查更新.TabIndex = 22;
             this.Button_自动检查更新.TabStop = false;
             this.Button_自动检查更新.Text = "自动检查更新 [√]";
@@ -343,9 +344,9 @@
             this.Button_检查更新.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Button_检查更新.Font = new System.Drawing.Font("微软雅黑", 8F);
             this.Button_检查更新.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.Button_检查更新.Location = new System.Drawing.Point(423, 205);
+            this.Button_检查更新.Location = new System.Drawing.Point(444, 205);
             this.Button_检查更新.Name = "Button_检查更新";
-            this.Button_检查更新.Size = new System.Drawing.Size(101, 22);
+            this.Button_检查更新.Size = new System.Drawing.Size(80, 22);
             this.Button_检查更新.TabIndex = 23;
             this.Button_检查更新.TabStop = false;
             this.Button_检查更新.Text = "检查更新";
@@ -362,8 +363,8 @@
             this.PictureBox_磁贴图标预览.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PictureBox_磁贴图标预览.TabIndex = 24;
             this.PictureBox_磁贴图标预览.TabStop = false;
-            this.toolTip.SetToolTip(this.PictureBox_磁贴图标预览, "磁贴预览框：\r\n按下 [鼠标左键] 开始屏幕取色，松开 [鼠标左键] 停止取色。\r\n单击 [鼠标右键] 重置为系统主题色。\r\n\r\n注意：开启 2004 新版磁贴样" +
-        "式后无法使用 [屏幕取色] 功能。\r\n注意：图标预览时可能会出现锯齿等显示问题，但实际磁贴显示正常！");
+            this.toolTip.SetToolTip(this.PictureBox_磁贴图标预览, "磁贴预览框：\r\n按下 [鼠标左键] 开始屏幕取色，松开 [鼠标左键] 停止取色。\r\n单击 [鼠标右键] 重置为系统主题色。\r\n\r\n注意：系统 2004 版本及以上" +
+        "/开启新版磁贴样式后，请开启下方的 [旧版磁贴模式] 才能使用 [屏幕取色] 功能。\r\n注意：图标预览时可能会出现锯齿等显示问题，但实际磁贴显示正常！");
             this.PictureBox_磁贴图标预览.Visible = false;
             this.PictureBox_磁贴图标预览.MouseClick += new System.Windows.Forms.MouseEventHandler(this.PictureBox_磁贴图片预览_MouseClick);
             this.PictureBox_磁贴图标预览.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PictureBox_磁贴图片预览_MouseDown);
@@ -399,6 +400,24 @@
             this.toolTip.ReshowDelay = 100;
             this.toolTip.ShowAlways = true;
             // 
+            // Button_旧版磁贴模式
+            // 
+            this.Button_旧版磁贴模式.BackColor = System.Drawing.Color.Gainsboro;
+            this.Button_旧版磁贴模式.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Button_旧版磁贴模式.FlatAppearance.BorderSize = 0;
+            this.Button_旧版磁贴模式.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Button_旧版磁贴模式.Font = new System.Drawing.Font("微软雅黑", 8F);
+            this.Button_旧版磁贴模式.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.Button_旧版磁贴模式.Location = new System.Drawing.Point(232, 205);
+            this.Button_旧版磁贴模式.Name = "Button_旧版磁贴模式";
+            this.Button_旧版磁贴模式.Size = new System.Drawing.Size(115, 22);
+            this.Button_旧版磁贴模式.TabIndex = 26;
+            this.Button_旧版磁贴模式.TabStop = false;
+            this.Button_旧版磁贴模式.Text = "旧版磁贴模式 [×]";
+            this.toolTip.SetToolTip(this.Button_旧版磁贴模式, "[√]：适合正在使用旧版磁贴的电脑 (支持自定义磁贴背景颜色、屏幕取色等)\r\n[×]：适合正在使用新版磁贴/系统 2004 版本以上的电脑");
+            this.Button_旧版磁贴模式.UseVisualStyleBackColor = false;
+            this.Button_旧版磁贴模式.Click += new System.EventHandler(this.Button_旧版磁贴模式_Click);
+            // 
             // Form
             // 
             this.AllowDrop = true;
@@ -406,6 +425,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(523, 227);
+            this.Controls.Add(this.Button_旧版磁贴模式);
             this.Controls.Add(this.Label_磁贴名称预览);
             this.Controls.Add(this.PictureBox_磁贴图标预览);
             this.Controls.Add(this.Button_初始化);
@@ -465,6 +485,7 @@
         private System.Windows.Forms.PictureBox PictureBox_磁贴图标预览;
         private System.Windows.Forms.Label Label_磁贴名称预览;
         private System.Windows.Forms.ToolTip toolTip;
+        private System.Windows.Forms.Button Button_旧版磁贴模式;
     }
 }
 

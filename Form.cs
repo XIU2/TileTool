@@ -70,7 +70,7 @@ namespace 磁贴美化小工具
             // 获取主题色并设置图片框背景颜色
             SystemColor = "#" + Registry_SystemColor.Get_SystemColor();
             PictureBox_磁贴图片预览.BackColor = ColorTranslator.FromHtml(SystemColor);
-            NewTileState = Registry_Other.Get_NewTileState(); // 获取是否开启 2004 新版磁贴样式
+            NewTileState = Registry_Other.Get_NewTileState(); // 获取是否开启新版磁贴样式，或系统 2004 版本以上
             //Debug.Print(NewTileState.ToString());
 
             // 磁贴预览标签背景透明
@@ -205,6 +205,14 @@ namespace 磁贴美化小工具
             {
                 Button_自动检查更新.Text = "自动检查更新 [×]";
             }
+            if (AppConfig.GetValue("LegacyTileMode", "false", AppConfig_Path) == "true")
+            {
+                Button_旧版磁贴模式.Text = "旧版磁贴模式 [√]";
+            }
+            else
+            {
+                Button_旧版磁贴模式.Text = "旧版磁贴模式 [×]";
+            }
         }
         
         private void Write_AppConfig() // 写出程序配置文件
@@ -216,6 +224,14 @@ namespace 磁贴美化小工具
             else
             {
                 AppConfig.SetValue("AutoCheckUpdate", "false", AppConfig_Path);
+            }
+            if (Button_旧版磁贴模式.Text == "旧版磁贴模式 [√]")
+            {
+                AppConfig.SetValue("LegacyTileMode", "true", AppConfig_Path);
+            }
+            else
+            {
+                AppConfig.SetValue("LegacyTileMode", "false", AppConfig_Path);
             }
         }
         
@@ -287,13 +303,13 @@ namespace 磁贴美化小工具
                 //Debug.Print(XML_VisualElements.ToString());
                 if (XML_VisualElements.Attribute("BackgroundColor") != null) // 磁贴背景颜色
                 {
-                    if (NewTileState == true) // 如果已经开启新版磁贴样式，则使用系统主题色
+                    if (Button_旧版磁贴模式.Text == "旧版磁贴模式 [√]" || NewTileState == false) // 如果没有开启新版磁贴样式/开启了旧版磁贴模式，则使用系统主题色
                     {
-                        UserColor = SystemColor;
+                        UserColor = XML_VisualElements.Attribute("BackgroundColor").Value.ToString();
                     }
                     else
                     {
-                        UserColor = XML_VisualElements.Attribute("BackgroundColor").Value.ToString();
+                        UserColor = SystemColor;
                     }
                     PictureBox_磁贴图片预览.BackColor = ColorTranslator.FromHtml(UserColor);
                 }
@@ -631,7 +647,19 @@ namespace 磁贴美化小工具
         {
             _ = Process.Start(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Programs));
         }
-        
+
+        private void Button_旧版磁贴模式_Click(object sender, EventArgs e) // 旧版磁贴模式
+        {
+            if (Button_旧版磁贴模式.Text == "旧版磁贴模式 [√]")
+            {
+                Button_旧版磁贴模式.Text = "旧版磁贴模式 [×]";
+            }
+            else
+            {
+                Button_旧版磁贴模式.Text = "旧版磁贴模式 [√]";
+            }
+        }
+
         private void Button_自动检查更新_Click(object sender, EventArgs e) // 自动检查更新
         {
             if (Button_自动检查更新.Text == "自动检查更新 [√]")
@@ -983,7 +1011,7 @@ namespace 磁贴美化小工具
         {
             if (e.Button == MouseButtons.Left)
             {
-                if (NewTileState == false)
+                if (Button_旧版磁贴模式.Text == "旧版磁贴模式 [√]" || NewTileState == false) // 如果没有开启新版磁贴样式/开启了旧版磁贴模式，则允许取色
                 {
                     PictureBox_磁贴图片预览.Cursor = Cursors.Cross;
                     ScreenColorFlag = true;
