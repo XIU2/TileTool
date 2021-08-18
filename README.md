@@ -1,9 +1,9 @@
 # XIU2/TileTool
 
 [![Release Version](https://img.shields.io/github/v/release/XIU2/TileTool.svg?style=flat-square&label=Release&color=1784ff)](https://github.com/XIU2/TileTool/releases/latest)
-[![GitHub license](https://img.shields.io/github/license/XIU2/TileTool.svg?style=flat-square&label=License&color=3cb371)](https://github.com/XIU2/TileTool/blob/master/LICENSE)
-[![GitHub Star](https://img.shields.io/github/stars/XIU2/TileTool.svg?style=flat-square&label=Star&color=3cb371)](https://github.com/XIU2/TileTool/stargazers)
-[![GitHub Fork](https://img.shields.io/github/forks/XIU2/TileTool.svg?style=flat-square&label=Fork&color=3cb371)](https://github.com/XIU2/TileTool/network/members)
+[![GitHub license](https://img.shields.io/github/license/XIU2/TileTool.svg?style=flat-square&label=License&color=3cb371&logo=github)](https://github.com/XIU2/TileTool/)
+[![GitHub Star](https://img.shields.io/github/stars/XIU2/TileTool.svg?style=flat-square&label=Star&color=3cb371&logo=github)](https://github.com/XIU2/TileTool/)
+[![GitHub Fork](https://img.shields.io/github/forks/XIU2/TileTool.svg?style=flat-square&label=Fork&color=3cb371&logo=github)](https://github.com/XIU2/TileTool/)
 
 **Windows10 磁贴美化小工具**
 
