@@ -42,7 +42,7 @@
 
 ## 下载地址
 
-* 蓝奏云 ：[https://pan.lanzoui.com/b0sp46eh](https://pan.lanzoui.com/b0sp46eh)
+* 蓝奏云 ：[https://pan.lanzouo.com/b0sp46eh](https://pan.lanzouo.com/b0sp46eh)
 * Github：[https://github.com/XIU2/TileTool/releases](https://github.com/XIU2/TileTool/releases)
 
 ****
