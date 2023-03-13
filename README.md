@@ -17,24 +17,24 @@
 
 ## 软件界面
 
-![软件界面](https://raw.githubusercontent.com/XIU2/TileTool/master/img/01.png)  
+![软件界面](https://cdn.staticaly.com/gh/XIU2/TileTool/master/img/01.png)  
 > 界面折腾半天发现还是好丑，我可能真的没有设计天赋 -.-...  
 
-![右键菜单](https://raw.githubusercontent.com/XIU2/TileTool/master/img/02.png)
+![右键菜单](https://cdn.staticaly.com/gh/XIU2/TileTool/master/img/02.png)
 > 右键菜单示例
 
 ****
 
 ## 效果示例
 
-![](https://raw.githubusercontent.com/XIU2/TileTool/master/img/09.png)  
-![](https://raw.githubusercontent.com/XIU2/TileTool/master/img/10.png)  
-![](https://raw.githubusercontent.com/XIU2/TileTool/master/img/03.png)  
-![](https://raw.githubusercontent.com/XIU2/TileTool/master/img/04.png)  
-![](https://raw.githubusercontent.com/XIU2/TileTool/master/img/05.png)  
-![](https://raw.githubusercontent.com/XIU2/TileTool/master/img/06.png)  
-![](https://raw.githubusercontent.com/XIU2/TileTool/master/img/07.png)  
-![](https://raw.githubusercontent.com/XIU2/TileTool/master/img/08.png)  
+![](https://cdn.staticaly.com/gh/XIU2/TileTool/master/img/09.png)  
+![](https://cdn.staticaly.com/gh/XIU2/TileTool/master/img/10.png)  
+![](https://cdn.staticaly.com/gh/XIU2/TileTool/master/img/03.png)  
+![](https://cdn.staticaly.com/gh/XIU2/TileTool/master/img/04.png)  
+![](https://cdn.staticaly.com/gh/XIU2/TileTool/master/img/05.png)  
+![](https://cdn.staticaly.com/gh/XIU2/TileTool/master/img/06.png)  
+![](https://cdn.staticaly.com/gh/XIU2/TileTool/master/img/07.png)  
+![](https://cdn.staticaly.com/gh/XIU2/TileTool/master/img/08.png)  
 
 > 磁贴图标包(400+)我放在蓝奏云网盘中了，需要自取。  
 
@@ -42,7 +42,7 @@
 
 ## 下载地址
 
-* 蓝奏云 ：[https://pan.lanzouv.com/b0sp46eh](https://pan.lanzouv.com/b0sp46eh)
+* 蓝奏云 ：[https://pan.lanzouf.com/b0sp46eh](https://pan.lanzouf.com/b0sp46eh)
 * Github：[https://github.com/XIU2/TileTool/releases](https://github.com/XIU2/TileTool/releases)
 
 ****

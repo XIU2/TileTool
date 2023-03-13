@@ -331,7 +331,7 @@
             this.Button_自动检查更新.Size = new System.Drawing.Size(115, 22);
             this.Button_自动检查更新.TabIndex = 22;
             this.Button_自动检查更新.TabStop = false;
-            this.Button_自动检查更新.Text = "自动检查更新 [√]";
+            this.Button_自动检查更新.Text = "自动检查更新 [×]";
             this.toolTip.SetToolTip(this.Button_自动检查更新, "[√]：启动软件后检查更新\r\n[×]：启动软件后不检查更新");
             this.Button_自动检查更新.UseVisualStyleBackColor = false;
             this.Button_自动检查更新.Click += new System.EventHandler(this.Button_自动检查更新_Click);

@@ -67,7 +67,7 @@ namespace 磁贴美化小工具.Properties {
         ///    &lt;supportedRuntime version=&quot;v4.0&quot; sku=&quot;.NETFramework,Version=v4.6&quot;/&gt;
         ///  &lt;/startup&gt;
         ///  &lt;appSettings&gt;
-        ///    &lt;add key=&quot;AutoCheckUpdate&quot; value=&quot;true&quot;/&gt;
+        ///    &lt;add key=&quot;AutoCheckUpdate&quot; value=&quot;false&quot;/&gt;
         ///    &lt;add key=&quot;EnableWindowsFormsHighDpiAutoResizing&quot; value=&quot;true&quot;/&gt;
         ///  &lt;/appSettings&gt;
         ///&lt;/configuration&gt; 的本地化字符串。

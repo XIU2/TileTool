@@ -85,9 +85,10 @@ namespace 磁贴美化小工具
                 this.AllowDrop = false;
                 FileDroper = new FileDropAdmin(this);
             }
-
+            Debug.Print(Button_自动检查更新.Text);
             // 读入程序配置文件
             Read_AppConfig();
+            Debug.Print(Button_自动检查更新.Text);
 
             // 创建线程检查更新
             if (Button_自动检查更新.Text == "自动检查更新 [√]")
@@ -197,7 +198,7 @@ namespace 磁贴美化小工具
         
         private void Read_AppConfig() // 读入程序配置文件
         {
-            if (AppConfig.GetValue("AutoCheckUpdate", "true", AppConfig_Path) == "true")
+            if (AppConfig.GetValue("AutoCheckUpdate", "false", AppConfig_Path) == "true")
             {
                 Button_自动检查更新.Text = "自动检查更新 [√]";
             }
@@ -688,7 +689,7 @@ namespace 磁贴美化小工具
         
         private void Check_Update(bool Tip) // 检查更新
         {
-            string strHTML = GetHTTP.Get_HTTP("https://api.xiuer.pw/ver/win10kscdmhxgj.txt", 10000, "utf-8");
+            string strHTML = GetHTTP.Get_HTTP("https://api.xiu2.xyz/ver/win10kscdmhxgj.txt", 10000, "utf-8");
             string[] Ver_Info = strHTML.Split('\n');
             if (Ver_Info.Length > 2 && Ver_Info[1] != Now_VerInfo)
             {

@@ -6,7 +6,7 @@
     <PlatformTarget>x64</PlatformTarget>
     <LangVersion>latest</LangVersion>
     <UseWindowsForms>true</UseWindowsForms>
-    <Version>4.1.0</Version>
+    <Version>4.1.1</Version>
     <Company>XIU2</Company>
     <Copyright>Copyright © 2020 XIU2. All Rights Reserved.</Copyright>
     <ApplicationManifest>app.manifest</ApplicationManifest>
